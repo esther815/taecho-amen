@@ -268,6 +268,8 @@ details.cell-d[open] .chev{transform:rotate(90deg)}
 .en{font-family:'Literata',Georgia,serif;font-weight:380;font-optical-sizing:auto}
 .vs.en-mode{line-height:1.8}
 .ent{display:block;font-family:'Literata',Georgia,serif;font-weight:380;font-size:calc(var(--fs) - 3px);line-height:1.7;color:var(--ink2);margin:4px 0 6px;padding-left:10px;border-left:2px solid var(--line)}
+.v.hl .et{background:linear-gradient(transparent 58%,var(--hl) 58%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hlitem .hen{display:block;margin-top:6px;font-family:'Literata',Georgia,serif;font-weight:380;font-size:15px;line-height:1.65;color:var(--ink2)}
 .ent.miss,.en.miss{font-style:italic;color:var(--mute)}
 .chap h2.en-t{font-family:'Literata',Georgia,serif;font-weight:400}
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
@@ -380,8 +382,8 @@ var EN=null,ENL=false;
 function loadEN(cb){if(EN)return cb();if(ENL)return;ENL=true;fetch(new URL('en.json',location.href.split('#')[0].split('?')[0]).href).then(function(r){return r.json();}).then(function(j){EN=j;ENL=false;cb();}).catch(function(){ENL=false;toast('영어 본문을 불러오지 못했어요');S.lang='ko';save();render();});}
 function enVerse(b,c,v){var t=EN&&EN.bible[b]&&EN.bible[b][c-1]?EN.bible[b][c-1][v-1]:null;return t;}
 function versesEN(b,c){var v=EN.bible[b][c-1]||[],h='';for(var i=0;i<v.length;i++){var key=b+'-'+c+'-'+(i+1),t=v[i];h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(i+1)+'"><sup>'+(i+1)+'</sup><span><span class="t en'+(t?'':' miss')+'">'+(t?esc(t):'BSB 본문에는 없는 절입니다')+'</span></span></p>';}return h;}
-function verses(b,c){if(S.lang==='en'&&EN)return versesEN(b,c);var both=S.lang==='both'&&EN;var v=BIB[b][c-1],h='',i=0;while(i<v.length){var j=i;while(j+1<v.length&&v[j+1]===v[i])j++;var key=b+'-'+c+'-'+(i+1);h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(j+1)+'"><sup>'+(i===j?(i+1):(i+1)+'–'+(j+1))+'</sup><span><span class="t">'+esc(v[i])+'</span>'+(both?(function(){var a=[];for(var q=i;q<=j;q++){var t=enVerse(b,c,q+1);if(t)a.push(t);}return a.length?'<span class="ent">'+esc(a.join(' '))+'</span>':'<span class="ent miss">BSB 본문에는 없는 절입니다</span>';})():'')+'</span></p>';i=j+1;}
- if(both){var ev=EN.bible[b][c-1]||[];for(var x=v.length;x<ev.length;x++){if(ev[x])h+='<p class="v"><sup>'+(x+1)+'</sup><span><span class="ent">'+esc(ev[x])+'</span></span></p>';}}
+function verses(b,c){if(S.lang==='en'&&EN)return versesEN(b,c);var both=S.lang==='both'&&EN;var v=BIB[b][c-1],h='',i=0;while(i<v.length){var j=i;while(j+1<v.length&&v[j+1]===v[i])j++;var key=b+'-'+c+'-'+(i+1);h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(j+1)+'"><sup>'+(i===j?(i+1):(i+1)+'–'+(j+1))+'</sup><span><span class="t">'+esc(v[i])+'</span>'+(both?(function(){var a=[];for(var q=i;q<=j;q++){var t=enVerse(b,c,q+1);if(t)a.push(t);}return a.length?'<span class="ent"><span class="et">'+esc(a.join(' '))+'</span></span>':'<span class="ent miss">BSB 본문에는 없는 절입니다</span>';})():'')+'</span></p>';i=j+1;}
+ if(both){var ev=EN.bible[b][c-1]||[];for(var x=v.length;x<ev.length;x++){if(ev[x]){var kx=b+'-'+c+'-'+(x+1);h+='<p class="v'+(S.hl[kx]?' hl':'')+'" id="v-'+kx+'" data-k="'+kx+'" data-e="'+(x+1)+'"><sup>'+(x+1)+'</sup><span><span class="ent"><span class="et">'+esc(ev[x])+'</span></span></span></p>';}}}
  return h;}
 function legal(){return '<footer class="legal"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 (1961, 저작권 보호기간 만료)</p><p>영어 본문: Berean Standard Bible (BSB), 퍼블릭 도메인 · berean.bible</p><p>원장번호 JS-2610-904</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p><p>무단 복제·전재·배포·변형 및 생성형 AI를 이용한 학습·분석·유사·파생 콘텐츠 제작을 금합니다. 위반 시 관련 법령에 따른 책임을 물을 수 있습니다.</p></footer>';}
 function missed(){var t=todayIdx(),r=[],d=DONE();for(var i=0;i<Math.min(t,LEN);i++)if(PLAN[i].length&&!d[i])r.push(i);return r;}
@@ -479,7 +481,7 @@ function vHl(){
  var lastB=-1;
  arr.forEach(function(x){if(by==='book'&&x.b!==lastB){h+='<div class="bookhd">'+KO[x.b]+'</div>';lastB=x.b;}
   var dt=x.t?new Date(x.t):null;
-  h+='<button class="hlitem" data-hk="'+x.k+'"><small>'+hlRef(x.k,x.e)+(dt?'<span>'+dt.getFullYear()+'. '+(dt.getMonth()+1)+'. '+dt.getDate()+'.</span>':'')+'</small><p><mark>'+esc(BIB[x.b][x.c-1][x.v-1])+'</mark></p></button>';});
+  h+='<button class="hlitem" data-hk="'+x.k+'"><small>'+hlRef(x.k,x.e)+(dt?'<span>'+dt.getFullYear()+'. '+(dt.getMonth()+1)+'. '+dt.getDate()+'.</span>':'')+'</small><p><mark>'+esc((BIB[x.b][x.c-1]||[])[x.v-1]||'')+'</mark>'+(EN&&S.lang!=='ko'&&enVerse(x.b,x.c,x.v)?'<span class="hen">'+esc(enVerse(x.b,x.c,x.v))+'</span>':'')+'</p></button>';});
  return h+legal();}
 function vNotes(){
  var ks=Object.keys(S.notes).filter(function(k){return (S.notes[k].t||'').trim();}).sort().reverse();
@@ -535,7 +537,7 @@ function bind(){
  document.querySelectorAll('.v[data-k]').forEach(function(p){p.onclick=function(){var k=p.dataset.k;if(S.hl[k]){delete S.hl[k];p.classList.remove('hl');toast('밑줄을 지웠습니다');}else{S.hl[k]={t:Date.now(),e:+p.dataset.e};p.classList.add('hl');toast('밑줄 · '+hlRef(k,+p.dataset.e));}save();};});
  document.querySelectorAll('[data-hk]').forEach(function(b){b.onclick=function(){var k=b.dataset.hk,a=k.split('-');var d=CH2DAY[a[0]+'-'+a[1]];go(d);setTimeout(function(){var el=document.getElementById('v-'+k);if(el){el.scrollIntoView({block:'center'});el.classList.add('flash');}},50);};});
  document.querySelectorAll('[data-hs]').forEach(function(b){b.onclick=function(){S.hlsort=b.dataset.hs;save();render();}});
- if(e=document.getElementById('hcp'))e.onclick=function(){var arr=Object.keys(S.hl).map(function(k){var a=k.split('-').map(Number);return {k:k,b:a[0],c:a[1],v:a[2]};}).sort(function(x,y){return x.b-y.b||x.c-y.c||x.v-y.v;});var txt=arr.map(function(x){return BIB[x.b][x.c-1][x.v-1]+' ('+hlRef(x.k,S.hl[x.k].e)+')';}).join('\n\n');copy(txt);};
+ if(e=document.getElementById('hcp'))e.onclick=function(){var arr=Object.keys(S.hl).map(function(k){var a=k.split('-').map(Number);return {k:k,b:a[0],c:a[1],v:a[2]};}).sort(function(x,y){return x.b-y.b||x.c-y.c||x.v-y.v;});var txt=arr.map(function(x){var e2=(EN&&S.lang!=='ko')?enVerse(x.b,x.c,x.v):null;return ((BIB[x.b][x.c-1]||[])[x.v-1]||'')+(e2?'\n'+e2:'')+' ('+hlRef(x.k,S.hl[x.k].e)+')';}).join('\n\n');copy(txt);};
  if(e=document.getElementById('cp'))e.onclick=function(){var ks=Object.keys(S.notes).sort();copy(ks.map(function(k){return fmtDate(parse(k),true)+' ('+(S.notes[k].r||'')+')\n'+S.notes[k].t;}).join('\n\n'));};
  if(e=document.getElementById('sd'))e.onchange=function(){setStart(e.value);};
  var si=document.getElementById('since');if(si)si.onchange=function(){if(si.value){S.since=si.value;save();toast('처음 시작한 날: '+fmtDate(parse(si.value),true));}};
