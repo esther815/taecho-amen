@@ -675,7 +675,7 @@ function showGift(preVoice){
   if(!keys.length)$('gvn').textContent='아직 녹음한 장이 없어요. 설정 → 녹음 모드를 켜면 장마다 녹음할 수 있어요.';
   if(preVoice&&keys.indexOf(preVoice)>=0)$('gv').value=preVoice;});
  function url(){var p=new URLSearchParams();var t=$('gt').value.trim(),f=$('gf').value.trim(),m=$('gm').value.trim();if(t)p.set('t',t);if(f)p.set('f',f);if(m&&m!==dm)p.set('m',m);if($('gv').value)p.set('v','1');S.lastTo=t;S.myName=f;S.lastMsg=m;save();return giftBase()+(p.toString()?'?'+p.toString():'');}
- function text(){var t=$('gt').value.trim(),f=$('gf').value.trim();return (t?t+'님, ':'')+(f?josa(f,'이','가')+' ':'')+'성경 1년을 선물했어요 🎁\n선물함을 열어 보세요.';}
+ function text(){var t=$('gt').value.trim(),f=$('gf').value.trim();return (t?t+'님께 ':'')+'선물이 도착했어요 🎁\n1년 동안 함께 읽을 성경입니다.'+(f?'\n— '+f+' 드림':'')+'\n\n선물함 열기';}
  $('gx').onclick=function(){sh.remove();};sh.onclick=function(e){if(e.target===sh)sh.remove();};
  $('gs').onclick=function(){var u=url(),tx=text();if($('gv').value)$('gvs').style.display='flex';
   if(navigator.share)navigator.share({title:'태초, 그리고 아멘 — 선물이 도착했어요',text:tx,url:u}).catch(function(){});else copy(tx+'\n'+u);};
