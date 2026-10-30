@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>태초, 그리고 아멘</title>
-<meta name="description" content="매년 성경 1독 — 개역한글 본문으로 날마다, 처음부터 끝까지">
+<meta name="description" content="매년 성경 일독 — 개역한글 본문으로 날마다, 처음부터 끝까지">
 <meta name="theme-color" content="#0E1424">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="태초, 그리고 아멘">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="태초, 그리고 아멘">
-<meta property="og:title" content="태초, 그리고 아멘 — 매년 성경 1독">
+<meta property="og:title" content="태초, 그리고 아멘 — 매년 성경 일독">
 <meta property="og:description" content="하루 3~4장, 1년이면 ‘태초에’에서 ‘아멘’까지. 개역한글 본문으로 함께 읽어요.">
 <meta property="og:image" content="https://taechoamen.com/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -154,7 +154,11 @@ footer.legal p{margin:0}
 .paper .to{font-size:13px;color:#8A6A9E;letter-spacing:.04em;margin:0 0 20px;font-weight:500}
 .paper p{font-family:var(--serif);font-size:17px;line-height:1.95;margin:0 0 16px;color:#2A2440;word-break:keep-all}
 .paper p.em{color:#7A4E8C}
-.paper .plan{margin:6px 0 20px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#F7EEF6,#FDF0E4);font-family:var(--sans);font-size:14px;line-height:1.8;color:#4A3F5E}
+.paper .lq{margin:4px 0 20px;padding:14px 18px;border-left:3px solid #C47FA6;border-radius:4px 14px 14px 4px;background:#F8F0F3;font-family:var(--serif);font-size:17px;line-height:1.8;color:#2A2440}
+.paper .lq cite{display:block;margin-top:4px;font-style:normal;font-family:var(--sans);font-size:12px;font-weight:700;color:#B0607E}
+.paper .heb{font-family:'Noto Serif Hebrew',serif;font-size:1.1em;color:#7A4E8C}
+.paper p.bless{font-size:18px;line-height:2;margin-top:4px}
+.paper .plan{margin:6px 0 24px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#F7EEF6,#FDF0E4);font-family:var(--sans);font-size:14px;line-height:1.8;color:#4A3F5E}
 .paper .plan b{color:#2A2440;display:block;margin-bottom:8px}
 .paper .pl{display:flex;gap:12px;padding:6px 0;border-top:1px solid rgba(122,78,140,.12)}
 .paper .pl span{flex:0 0 52px;font-weight:700;color:#7A4E8C}
@@ -214,7 +218,7 @@ footer.legal p{margin:0}
 </head>
 <body>
 <header class="top"><div class="top-in">
-<div class="brand"><small>매년 성경 1독</small>태초, 그리고 아멘</div>
+<div class="brand"><small>매년 성경 일독</small>태초, 그리고 아멘</div>
 <div class="pill" aria-live="polite"><span id="pc">0 / 363</span><span class="pbar"><i id="pb" style="width:0"></i></span></div>
 </div></header>
 <main id="view"></main>
@@ -284,19 +288,22 @@ function annivMsg(){if(!S.since)return '';var sd=parse(S.since),t=today0(),n=sin
 function memo(){
  if(!S.since)return '<div class="memo"><small>처음 시작한 날</small><b>아직 기록 전입니다</b><p>첫날 본문을 읽고 ‘다 읽었어요’를 누르면 그날이 처음 시작한 날로 기록됩니다.</p></div>';
  var fin=S.fin||[];
- return '<div class="memo"><small>처음 시작한 날</small><b>'+fmtDate(parse(S.since),true)+'</b><p>오늘로 <span class="dn">'+sinceN()+'일째</span>'+(fin.length?' · 1독 완료 <span class="dn">'+fin.length+'회</span>':'')+'</p>'+(fin.length?'<p>'+fin.map(function(f,k){return (k+1)+'독: '+fmtDate(parse(f),true)+' 완료';}).join('<br>')+'</p>':'')+'</div>';}
+ return '<div class="memo"><small>처음 시작한 날</small><b>'+fmtDate(parse(S.since),true)+'</b><p>오늘로 <span class="dn">'+sinceN()+'일째</span>'+(fin.length?' · 일독 완료 <span class="dn">'+fin.length+'회</span>':'')+'</p>'+(fin.length?'<p>'+fin.map(function(f,k){return (k+1)+'번째 일독: '+fmtDate(parse(f),true)+' 완료';}).join('<br>')+'</p>':'')+'</div>';}
 function letterArt(){return '<svg class="lt-art" viewBox="0 280 1024 700" aria-hidden="true"><defs><radialGradient id="lsun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8E7"/><stop offset=".45" stop-color="#FFE3AE"/><stop offset="1" stop-color="#FFC98A" stop-opacity="0"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE9C2" stop-opacity=".75"/><stop offset=".5" stop-color="#FFC9A0" stop-opacity=".25"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient><clipPath id="labove"><rect x="0" y="0" width="1024" height="640"/></clipPath></defs><g fill="#FFF6E0"><circle cx="236" cy="330" r="5" opacity=".85"/><circle cx="318" cy="300" r="3" opacity=".6"/><circle cx="770" cy="320" r="4" opacity=".75"/><circle cx="168" cy="420" r="3" opacity=".5"/><path d="M742 380c4 26 14 36 40 40-26 4-36 14-40 40-4-26-14-36-40-40 26-4 36-14 40-40z" opacity=".95"/></g><circle cx="512" cy="640" r="300" fill="url(#lglow)"/><g clip-path="url(#labove)"><circle cx="512" cy="640" r="168" fill="url(#lsun)"/><circle cx="512" cy="640" r="128" fill="#FFF4DD"/></g><path d="M150 640H262M762 640H874" stroke="#FFF6E6" stroke-width="6" stroke-linecap="round" opacity=".9"/><g transform="translate(0 30)"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44c56-40 140-54 224-44v150c-84-10-168 4-224 44z" fill="#FFFFFF" fill-opacity=".16"/><g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44"/><path d="M512 760c56-40 140-54 224-44v-150c-84-10-168 4-224 44"/><path d="M512 610v150"/></g></g></svg>';}
 function showLetter(gift){
  var el=document.createElement('div');el.className='lt';el.setAttribute('role','dialog');el.setAttribute('aria-label','태초, 그리고 아멘 — 첫 편지');
- el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 1독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
+ el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 일독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
  (gift?'<div class="giftnote"><small>🎁 '+esc(gift.from?josa(gift.from,'이','가')+' 보낸 선물':'소중한 사람이 보낸 선물')+'</small><p>'+esc(gift.msg||'')+'</p>'+(gift.from?'<p class="by">From. '+esc(gift.from)+'</p>':'')+'</div>':'')+
- '<article class="paper"><p class="to">'+(gift&&gift.to?esc(gift.to)+'님에게':'처음 이 앱을 펼친 당신에게')+'</p>'+
- '<p>성경은 많은 집에 한 권쯤 꽂혀 있는 책입니다. 그런데 처음부터 끝까지 읽어 본 사람은 생각보다 드뭅니다.</p>'+
- '<p>어려워서가 아니라, 길을 정해 두지 않았기 때문일지도 모릅니다. 그래서 그 길을 미리 닦아 두었습니다.</p>'+
- '<div class="plan"><b>하루 3~4장, 15~20분</b><div class="pl"><span>월~금</span>구약 2~3장 + 신약 1장</div><div class="pl"><span>토</span>구약 2~3장</div><div class="pl"><span>주일</span>시편 3편</div><p class="pn">구약은 사건이 일어난 순서대로 읽고, 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</p></div>'+
- '<p>밀리는 날도 있을 거예요. 괜찮습니다. 다시 펼친 날, 그날부터 이어 가면 됩니다.</p>'+
- '<p>읽다가 생긴 질문 하나, 마음에 남은 구절 하나면 충분합니다.</p>'+
- '<p class="em">1년 뒤, 마지막 장을 덮는 당신을 기다리고 있을게요.</p>'+
+ '<article class="paper"><p class="to">'+(gift&&gift.to?esc(gift.to)+'님에게':'이 앱을 처음 펼친 당신에게')+'</p>'+
+ '<p>성경은 ‘태초에’라는 말로 시작합니다. 히브리어로는 베레쉬트(<span class="heb" lang="he" dir="rtl">בְּרֵאשִׁית</span>), 창세기의 첫 단어입니다.</p>'+
+'<blockquote class="lq">태초에 하나님이 천지를 창조하시니라<cite>창세기 1:1</cite></blockquote>'+
+'<p>요한은 같은 말로 복음서를 엽니다.</p>'+
+'<blockquote class="lq">태초에 말씀이 계시니라<cite>요한복음 1:1</cite></blockquote>'+
+'<p>‘태초에’로 시작하는 성경은 구약 39권과 신약 27권, 모두 66권입니다. 신약(新約)은 ‘새 언약’이라는 뜻으로, 예수 그리스도 안에서 이루어진 하나님의 새 약속을 담고 있습니다. 그리고 그 마지막 줄은 ‘아멘’으로 맺습니다.</p>'+
+'<blockquote class="lq">주 예수의 은혜가 모든 자들에게 있을찌어다 아멘<cite>요한계시록 22:21</cite></blockquote>'+
+'<div class="plan"><b>하루 3~4장, 15~20분</b><div class="pl"><span>월~금</span>구약 2~3장 + 신약 1장</div><div class="pl"><span>토</span>구약 2~3장</div><div class="pl"><span>주일</span>시편 3편</div><p class="pn">구약은 사건이 일어난 순서대로 읽습니다. 그렇게 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</p></div>'+
+'<p>태초의 말씀이신 하나님으로 시작된 이 책을 우리 모두 ‘아멘’으로 맺기까지,</p>'+
+'<p class="em bless">이 일독의 여정이<br>해마다 이어지기를,<br>사랑하는 이의 손에 전해지기를,<br>그리고 그 모든 날이 귀하고 충만하기를 축복합니다.</p>'+
  '<div class="sig"><span class="gk2" lang="grc">οὐκ ἐγκακοῦμεν</span><span class="gk2s">우리가 낙심하지 아니하노니 · 고린도후서 4:16</span><span class="from">태초, 그리고 아멘 드림</span></div></article>'+
  (function(){var M=monthBooks(false),h='<section class="lt-months"><h2>열두 달, 한 편의 이야기</h2><p class="sub2">구약은 사건이 일어난 순서대로 놓았습니다. 한 달 한 달이 이야기의 한 장(章)이 됩니다.</p>';Object.keys(M).map(Number).sort(function(a,b){return a-b}).forEach(function(k){var m=M[k];h+='<div class="lm"><b>'+monthLabel(m,k)+'</b><div><h3>'+ERA[k]+'</h3><p><em>구약</em>'+m.ot.join(' · ')+(m.nt.length?'<br><em>신약</em>'+m.nt.join(' · '):'')+'</p></div></div>';});return h+'<p class="sub2" style="margin:12px 0 0">주일마다 시편을 함께 읽습니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p></section>';})()+
  '<button class="lt-btn" type="button" id="ltgo">1년의 여정 시작하기</button>'+
@@ -460,7 +467,7 @@ function shape(t,c){var r=Math.random,sz;
  case 'lamp':return '<svg width="'+(14+r()*14)+'" viewBox="0 0 16 24"><path fill="'+c+'" d="M8 0C10 5 14 8 14 13a6 6 0 0 1-12 0C2 8 6 5 8 0z"/><path fill="#FFF3C4" d="M8 9c1 2.5 2.6 4 2.6 6a2.6 2.6 0 0 1-5.2 0C5.4 13 7 11.5 8 9z"/></svg>';
  }}
 function celebrate(i,o){
- var all=!!o.fin,t=all?{k:'all',name:'1독 완료'}:themeFor(i);
+ var all=!!o.fin,t=all?{k:'all',name:'일독 완료'}:themeFor(i);
  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
  try{if(navigator.vibrate)navigator.vibrate([20,40,20]);}catch(e){}
  if(!reduce){var fx=document.createElement('div');fx.className='fx';document.body.appendChild(fx);
@@ -476,7 +483,7 @@ function celebrate(i,o){
  var m=all?'태초에서 아멘까지, 다 읽었어요. 우리가 낙심하지 아니하노니.':o.late?MSG_LATE[rotIdx(i,MSG_LATE.length,2,'l')]:o.first?'오늘을 처음 시작한 날로 기록했어요. 오래 기억할게요.':MSG[rotIdx(i,MSG.length,7,'m')];
  var gk=(all||m===MSG_LATE[0])?'<span class="gk" lang="grc">οὐκ ἐγκακοῦμεν<small>고린도후서 4:16</small></span>':'';
  var vs='';if(!all&&!gk&&hsh(seed+'v')%5<2){var V=VERSES[rotIdx(i,VERSES.length,11,'v')];vs='<blockquote class="cel-v">'+esc(BIB[V[0]][V[1]-1][V[2]-1])+'<cite>'+KO[V[0]]+' '+V[1]+':'+V[2]+'</cite></blockquote>';}
- var sub=all?'1독 완료를 기록했습니다. 해마다 다시, 태초에서 아멘까지.':o.n+'일째 완료 · 내일은 무엇이 쏟아질까요?';
+ var sub=all?'일독 완료를 기록했습니다. 해마다 다시, 태초에서 아멘까지.':o.n+'일째 완료 · 내일은 무엇이 쏟아질까요?';
  var cel=document.createElement('div');cel.className='cel';cel.setAttribute('role','dialog');cel.setAttribute('aria-label','완료 축하');
  cel.innerHTML='<div class="cel-card"><small>오늘의 선물 · '+t.name+'</small><b>'+m+'</b>'+gk+vs+'<p>'+sub+'</p><button type="button">고마워요</button><button type="button" class="cel-gift" id="celgift">이 기쁨을 소중한 사람에게 선물하기</button></div>';
  document.body.appendChild(cel);var close=function(){cel.remove();};cel.querySelector('button').onclick=close;cel.querySelector('#celgift').onclick=function(){close();showGift();};cel.onclick=function(e){if(e.target===cel)close();};
