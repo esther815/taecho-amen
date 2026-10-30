@@ -22,7 +22,7 @@
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+Hebrew:wght@500&family=Noto+Serif:ital,wght@1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+Hebrew:wght@500&family=Noto+Serif:ital,wght@1,400&family=Literata:opsz,wght@7..72,300..600&display=swap">
 <style>
 :root{--bg:#F6F2E9;--card:#FFFFFF;--ink:#18233A;--ink2:#4A5263;--mute:#6E6658;--line:#E2DACB;--accent:#8A5F12;--accent-ink:#FFFFFF;--soft:#EFE7D6;--done:#8A5F12;--miss:#B9AE99;--hl:rgba(226,182,90,.5);--late:#4F6F9A;--late-ink:#FFFFFF;color-scheme:light;
 --serif:'Noto Serif KR','AppleMyungjo','Nanum Myeongjo',serif;--sans:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;--fs:19px}
@@ -262,6 +262,14 @@ details.cell-d[open] .chev{transform:rotate(90deg)}
 .cell.danger b{color:#B3261E}
 .seg button{min-width:44px}
 
+.lang-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 4px}
+.lang-row .ver{font-size:12px;color:var(--mute)}
+.lang-row .seg button{min-height:36px;font-size:13px;padding:0 12px}
+.en{font-family:'Literata',Georgia,serif;font-weight:380;font-optical-sizing:auto}
+.vs.en-mode{line-height:1.8}
+.ent{display:block;font-family:'Literata',Georgia,serif;font-weight:380;font-size:calc(var(--fs) - 3px);line-height:1.7;color:var(--ink2);margin:4px 0 6px;padding-left:10px;border-left:2px solid var(--line)}
+.ent.miss,.en.miss{font-style:italic;color:var(--mute)}
+.chap h2.en-t{font-family:'Literata',Georgia,serif;font-weight:400}
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .fx .p{position:absolute;top:-60px;left:0;will-change:transform}
 .cel{position:fixed;inset:0;z-index:51;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,20,36,.18)}
@@ -301,7 +309,7 @@ var KO=D.ko,BIB=D.bible,PT=D.titles,SQ=D.seq;
 var WD='일월화수목금토';
 var ERA=["태초와 족장","요셉에서 출애굽으로","율법과 광야","가나안 입성","사사 시대와 왕국의 시작","다윗과 솔로몬","지혜서와 왕국 분열","두 왕국의 몰락","선지자들의 경고","유다의 마지막 시간","예루살렘 함락과 포로기","귀환, 그리고 마지막 장"];
 var LBL={ot:"구약",nt:"신약",ps:"시편"};
-var K='tam.v2',S={start:null,cyc:{},notes:{},hl:{},fs:1,theme:'light',alarm:{on:false,time:'21:00'}};
+var K='tam.v2',S={start:null,cyc:{},notes:{},hl:{},fs:1,theme:'light',alarm:{on:false,time:'21:00'},lang:'ko'};
 try{var raw=localStorage.getItem(K);if(raw){var o=JSON.parse(raw);for(var k in o)S[k]=o[k];}}catch(e){}
 function save(){try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}}
 function ymd(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
@@ -368,8 +376,14 @@ function heroBg(){return (SE.dark?'<div class="bl" style="inset:0;width:auto;hei
 function applySet(){document.documentElement.style.setProperty('--fs',[17,19,21,24][S.fs]+'px');if(S.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',S.theme);applySeason();}
 function prog(){var n=0,d=DONE();for(var k in d)if(d[k])n++;document.getElementById('pc').textContent=n+' / '+READ_DAYS;document.getElementById('pb').setAttribute('stroke-dashoffset',(94.2*(1-n/READ_DAYS)).toFixed(1));return n;}
 function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('show')},1600);}
-function verses(b,c){var v=BIB[b][c-1],h='',i=0;while(i<v.length){var j=i;while(j+1<v.length&&v[j+1]===v[i])j++;var key=b+'-'+c+'-'+(i+1);h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(j+1)+'"><sup>'+(i===j?(i+1):(i+1)+'–'+(j+1))+'</sup><span><span class="t">'+esc(v[i])+'</span></span></p>';i=j+1;}return h;}
-function legal(){return '<footer class="legal"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 (1961, 저작권 보호기간 만료)</p><p>원장번호 JS-2610-904</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p><p>무단 복제·전재·배포·변형 및 생성형 AI를 이용한 학습·분석·유사·파생 콘텐츠 제작을 금합니다. 위반 시 관련 법령에 따른 책임을 물을 수 있습니다.</p></footer>';}
+var EN=null,ENL=false;
+function loadEN(cb){if(EN)return cb();if(ENL)return;ENL=true;fetch(new URL('en.json',location.href.split('#')[0].split('?')[0]).href).then(function(r){return r.json();}).then(function(j){EN=j;ENL=false;cb();}).catch(function(){ENL=false;toast('영어 본문을 불러오지 못했어요');S.lang='ko';save();render();});}
+function enVerse(b,c,v){var t=EN&&EN.bible[b]&&EN.bible[b][c-1]?EN.bible[b][c-1][v-1]:null;return t;}
+function versesEN(b,c){var v=EN.bible[b][c-1]||[],h='';for(var i=0;i<v.length;i++){var key=b+'-'+c+'-'+(i+1),t=v[i];h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(i+1)+'"><sup>'+(i+1)+'</sup><span><span class="t en'+(t?'':' miss')+'">'+(t?esc(t):'BSB 본문에는 없는 절입니다')+'</span></span></p>';}return h;}
+function verses(b,c){if(S.lang==='en'&&EN)return versesEN(b,c);var both=S.lang==='both'&&EN;var v=BIB[b][c-1],h='',i=0;while(i<v.length){var j=i;while(j+1<v.length&&v[j+1]===v[i])j++;var key=b+'-'+c+'-'+(i+1);h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(j+1)+'"><sup>'+(i===j?(i+1):(i+1)+'–'+(j+1))+'</sup><span><span class="t">'+esc(v[i])+'</span>'+(both?(function(){var a=[];for(var q=i;q<=j;q++){var t=enVerse(b,c,q+1);if(t)a.push(t);}return a.length?'<span class="ent">'+esc(a.join(' '))+'</span>':'<span class="ent miss">BSB 본문에는 없는 절입니다</span>';})():'')+'</span></p>';i=j+1;}
+ if(both){var ev=EN.bible[b][c-1]||[];for(var x=v.length;x<ev.length;x++){if(ev[x])h+='<p class="v"><sup>'+(x+1)+'</sup><span><span class="ent">'+esc(ev[x])+'</span></span></p>';}}
+ return h;}
+function legal(){return '<footer class="legal"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 (1961, 저작권 보호기간 만료)</p><p>영어 본문: Berean Standard Bible (BSB), 퍼블릭 도메인 · berean.bible</p><p>원장번호 JS-2610-904</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p><p>무단 복제·전재·배포·변형 및 생성형 AI를 이용한 학습·분석·유사·파생 콘텐츠 제작을 금합니다. 위반 시 관련 법령에 따른 책임을 물을 수 있습니다.</p></footer>';}
 function missed(){var t=todayIdx(),r=[],d=DONE();for(var i=0;i<Math.min(t,LEN);i++)if(PLAN[i].length&&!d[i])r.push(i);return r;}
 function cycMonth(i){var d=dateOf(i);return ((d.getFullYear()-START.getFullYear())*12+d.getMonth()-START.getMonth());}
 function nextStart(){var t=today0();if(t.getMonth()>=9)return ymd(new Date(t.getFullYear()+1,0,1));if(t.getMonth()===0)return ymd(new Date(t.getFullYear(),0,1));return ymd(t);}
@@ -429,7 +443,12 @@ function vToday(){
  if(!p.length){var m=missed();h+='<div class="rest-box"><h2>오늘은 보충일입니다</h2><p>그동안 밀린 날을 채우거나, 적어 둔 질문과 밑줄을 다시 읽어 보세요.</p>'+(m.length?'<div class="misslist">'+m.slice(0,30).map(function(x){return '<button data-go="'+x+'">'+(dateOf(x).getMonth()+1)+'/'+dateOf(x).getDate()+'</button>';}).join('')+'</div>':'<p><b>밀린 날이 없습니다.</b></p>')+'</div>';}
  else{
   h+='<p class="hint">구절을 누르면 밑줄이 그어지고, 다시 누르면 지워집니다. 밑줄은 ‘밑줄’ 탭에 모입니다.</p>';
-  p.forEach(function(s,k){h+='<section class="chap" id="c'+k+'"><h2>'+KO[s[1]]+' '+s[2]+'장<small>'+LBL[s[0]]+'</small></h2>'+(s[1]===18&&PT[s[2]]?'<p class="ptitle">['+esc(PT[s[2]])+']</p>':'')+'<div class="aud" data-ac="'+s[1]+'-'+s[2]+'"></div><div class="vs">'+verses(s[1],s[2])+'</div></section>';});
+  var enm=S.lang==='en'&&EN,bth=S.lang==='both'&&EN;
+  h+='<div class="lang-row"><span class="ver">'+(enm?'Berean Standard Bible':bth?'개역한글 · BSB':'개역한글')+'</span><div class="seg" role="group" aria-label="성경 언어">'+[['ko','한글'],['en','English'],['both','함께']].map(function(x){return '<button data-lang="'+x[0]+'" aria-pressed="'+(S.lang===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div>';
+  p.forEach(function(s,k){var ept=EN&&EN.ptitles?EN.ptitles[String(s[2])]:null;
+   h+='<section class="chap" id="c'+k+'">'+(enm?'<h2 class="en-t">'+esc(EN.names[s[1]])+' '+s[2]+'<small>'+LBL[s[0]]+'</small></h2>':'<h2>'+KO[s[1]]+' '+s[2]+'장<small>'+LBL[s[0]]+'</small></h2>')+
+   (s[1]===18?((!enm&&PT[s[2]]?'<p class="ptitle">['+esc(PT[s[2]])+']</p>':'')+((enm||bth)&&ept?'<p class="ptitle en">'+esc(ept)+'</p>':'')):'')+
+   '<div class="aud" data-ac="'+s[1]+'-'+s[2]+'"></div><div class="vs'+(enm?' en-mode':'')+'">'+verses(s[1],s[2])+'</div></section>';});
  }
  var on=!!dn[i],nk=ymd(d),nv=S.notes[nk]?S.notes[nk].t:'';
  h+='<div class="done-box"><label for="q">오늘의 질문 한 줄<span>왜 그렇게 했을까? 나라면 어떻게 했을까?</span></label><textarea id="q" placeholder="읽고 나서 궁금해진 것 하나를 적어 보세요">'+esc(nv)+'</textarea><div class="saved" id="sv"></div>'+(p.length?'<button class="big'+(on?' on':'')+'" id="dn">'+(on?(isLate(i)?'나중에 채워 읽음 ✓ · 다시 누르면 해제':'읽음 ✓ · 다시 누르면 해제'):'다 읽었어요')+'</button>':'')+'</div>';
@@ -483,6 +502,7 @@ function vSet(){
   '<div class="cell"><div><b>처음 시작한 날</b><span class="d">첫 ‘다 읽었어요’를 누른 날이 기록돼요</span></div><input type="date" id="since" value="'+(S.since||'')+'" aria-label="처음 시작한 날"></div></div></section>';
  h+='<section class="grp"><h2>읽기 화면</h2><div class="cells">'+
   '<div class="cell"><b>글자 크기</b><div class="seg">'+['작게','보통','크게','아주'].map(function(l,k){return '<button data-fs="'+k+'" aria-pressed="'+(S.fs===k)+'">'+l+'</button>';}).join('')+'</div></div>'+
+  '<div class="cell"><b>성경 언어</b><div class="seg">'+[['ko','한글'],['en','English'],['both','함께']].map(function(x){return '<button data-lang="'+x[0]+'" aria-pressed="'+(S.lang===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div>'+
   '<div class="cell"><b>화면</b><div class="seg">'+[['light','밝게'],['dark','어둡게'],['auto','자동']].map(function(x){return '<button data-th="'+x[0]+'" aria-pressed="'+(S.theme===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div></div></section>';
  h+='<section class="grp"><h2>함께하기</h2><div class="cells">'+
   '<button class="cell" type="button" id="ltshow"><b>첫 편지 다시 보기</b>'+chev+'</button>'+
@@ -528,6 +548,7 @@ function bind(){
  if(e=document.getElementById('alcal'))e.onclick=function(){addCal();};
  var rsw=document.getElementById('recsw');if(rsw)rsw.onchange=function(){S.rec=rsw.checked;save();toast(rsw.checked?'녹음 모드를 켰어요':'녹음 모드를 껐어요');};
  document.querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){S.rec=b.dataset.rec==='1';save();render();}});
+ document.querySelectorAll('[data-lang]').forEach(function(b){b.onclick=function(){var L=b.dataset.lang;if(L===S.lang)return;S.lang=L;save();if(L!=='ko'&&!EN){toast('영어 본문을 불러오는 중…');loadEN(function(){render();});}else render();};});
  document.querySelectorAll('[data-fs]').forEach(function(b){b.onclick=function(){S.fs=+b.dataset.fs;save();applySet();render();}});
  document.querySelectorAll('[data-th]').forEach(function(b){b.onclick=function(){S.theme=b.dataset.th;save();applySet();render();}});
  if(e=document.getElementById('rs'))e.onclick=function(){if(confirm('이번 1년의 읽음 표시를 모두 지울까요? 질문과 밑줄은 남습니다.')){S.cyc[S.start]={done:{}};save();render();toast('초기화했습니다');}};
@@ -692,7 +713,7 @@ function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new
  toast('캘린더 창이 열리면 「추가」를 눌러 주세요');}
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
-applySet();render();var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
+applySet();render();if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
 if(GN){S.gift=GN;save();showLetter(GN);}else showLetter();
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
