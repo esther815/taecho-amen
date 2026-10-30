@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>선물이 도착했어요 — 태초, 그리고 아멘</title>
+<meta name="description" content="소중한 사람이 성경 1년을 선물했어요. 선물함을 열어 보세요.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="태초, 그리고 아멘">
+<meta property="og:title" content="소중한 사람이 성경 1년을 선물했어요 🎁">
+<meta property="og:description" content="선물함을 열어 보세요 · 하루 3~4장, 1년이면 태초에서 아멘까지">
+<meta property="og:image" content="https://taechoamen.com/og-gift.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://taechoamen.com/gift.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#232A63">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+:root{--serif:'Noto Serif KR',serif;--sans:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;min-height:100%}
+body{font-family:var(--sans);color:#2A2440;word-break:keep-all;background:linear-gradient(180deg,#232A63 0%,#5B4E9E 30%,#C47FA6 52%,#F3A88A 70%,#FFD7A3 86%,#FBEFDF 100%);background-attachment:fixed;min-height:100vh;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 36px) 22px calc(env(safe-area-inset-bottom,0px) + 40px);position:relative;z-index:1;text-align:center}
+.kick{color:#FFF0DE;font-size:12px;letter-spacing:.22em;font-weight:700;margin:0 0 10px}
+h1{margin:0;color:#fff;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.35;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(35,42,99,.35)}
+.from{color:#FFF3E6;font-size:15px;margin:10px 0 0}
+.stage{position:relative;width:280px;height:280px;margin:26px auto 6px}
+.glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,200,.9),rgba(255,210,170,.3) 45%,transparent 70%);animation:breathe 3s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(.94);opacity:.85}50%{transform:scale(1.04);opacity:1}}
+.stage svg{position:absolute;inset:0;width:280px;height:280px;overflow:visible}
+.boxg{transform-origin:150px 200px;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.lidg{transform-origin:150px 120px;transform-box:view-box}
+.wiggle .boxg{animation:wig .6s ease-in-out}
+@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.rays{position:absolute;left:50%;top:44%;width:520px;height:520px;margin:-260px 0 0 -260px;opacity:0;transform:scale(.2);pointer-events:none;background:repeating-conic-gradient(from 0deg,rgba(255,244,214,.55) 0 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 0 30%,transparent 62%);mask:radial-gradient(circle,#000 0 30%,transparent 62%)}
+.open .rays{animation:rays 1.8s ease-out forwards}
+@keyframes rays{0%{opacity:0;transform:scale(.2) rotate(0)}30%{opacity:1}100%{opacity:.0;transform:scale(1.3) rotate(40deg)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 34px;border:0;border-radius:999px;background:#fff;color:#5B4E9E;font:700 17px var(--sans);box-shadow:0 12px 30px rgba(35,42,99,.3);cursor:pointer}
+.btn.grad{width:100%;background:linear-gradient(135deg,#5B4E9E,#C47FA6 60%,#F3A88A);color:#fff}
+.hint{color:#FFF3E6;font-size:13px;margin:14px 0 0}
+.card{display:none;text-align:left;background:rgba(255,251,244,.95);border-radius:26px;padding:28px 24px 26px;box-shadow:0 24px 60px rgba(35,42,99,.28);margin-top:4px}
+.open .card{display:block;animation:up .7s cubic-bezier(.2,1,.3,1) both .5s}
+@keyframes up{0%{opacity:0;transform:translateY(40px)}100%{opacity:1;transform:none}}
+.open .pre{display:none}
+.to{font-size:13px;color:#8A6A9E;margin:0 0 14px;font-weight:500}
+.msg{font-family:var(--serif);font-size:19px;line-height:1.85;margin:0 0 14px;white-space:pre-wrap;color:#2A2440}
+.sign{text-align:right;font-family:var(--serif);font-size:16px;margin:0 0 18px;color:#2A2440}
+.voice{display:none;margin:0 0 18px;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#F1E9F7,#FDEFE6);font-size:14px;line-height:1.7;color:#4A3F5E}
+.voice b{color:#2A2440}
+.what{border-top:1px dashed #E3D3D8;padding-top:18px;font-size:14px;line-height:1.8;color:#4A3F5E}
+.what b{color:#2A2440;font-family:var(--serif);font-weight:600;font-size:17px}
+.verse{margin:16px 0 20px;padding:14px 16px;border-radius:16px;background:#F7F1EA;font-family:var(--serif);font-size:15px;line-height:1.8;color:#3A3350}
+.verse cite{display:block;margin-top:6px;font-style:normal;font-family:var(--sans);font-size:12px;font-weight:700;color:#B0607E}
+.p{position:fixed;top:-40px;pointer-events:none;z-index:5}
+.foot{margin-top:26px;font-size:10.5px;line-height:1.6;color:#7C6F78}
+.foot p{margin:0}
+@media (prefers-reduced-motion:reduce){.boxg,.glow{animation:none}}
+</style>
+</head>
+<body>
+<main class="wrap" id="w">
+<div class="pre">
+<p class="kick">선물이 도착했어요</p>
+<h1 id="h">소중한 사람이<br>성경 1년을 선물했어요</h1>
+<p class="from" id="fr"></p>
+</div>
+<div class="stage" id="st" aria-hidden="true">
+<div class="glow"></div><div class="rays"></div>
+<svg viewBox="0 0 300 300"><defs>
+<linearGradient id="bx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6EA"/><stop offset="1" stop-color="#F6D6C2"/></linearGradient>
+<linearGradient id="ld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBF4"/><stop offset="1" stop-color="#F9E2D2"/></linearGradient>
+<linearGradient id="rb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C47FA6"/><stop offset="1" stop-color="#7A5BB0"/></linearGradient>
+</defs><g class="boxg"><g id="body"><rect x="58" y="138" width="184" height="132" rx="14" fill="url(#bx)"/><rect x="134" y="138" width="32" height="132" fill="url(#rb)"/><rect x="58" y="138" width="184" height="16" fill="#E9C3B0" opacity=".5"/></g>
+<g class="lidg" id="lid"><g id="lid"><rect x="46" y="100" width="208" height="46" rx="12" fill="url(#ld)"/><rect x="134" y="100" width="32" height="46" fill="url(#rb)"/>
+<path d="M150 102C126 70 92 62 86 84c-5 18 30 24 64 18z" fill="url(#rb)"/><path d="M150 102C174 70 208 62 214 84c5 18-30 24-64 18z" fill="url(#rb)"/>
+<path d="M150 102c-10 18-22 30-38 36M150 102c10 18 22 30 38 36" stroke="url(#rb)" stroke-width="10" stroke-linecap="round" fill="none"/>
+<circle cx="150" cy="100" r="13" fill="#9B6CB8"/></g>
+</g></g></svg>
+</div>
+<div class="pre"><button class="btn" id="op" type="button">선물 열기</button><p class="hint">상자를 눌러도 열려요</p></div>
+<article class="card" aria-live="polite">
+<p class="to" id="to"></p>
+<p class="msg" id="msg"></p>
+<p class="sign" id="sg"></p>
+<div class="voice" id="vc"><b>🎧 목소리 선물도 함께 왔어요.</b><br>카카오톡 대화방에 함께 온 음성 파일을 눌러 들어 보세요.</div>
+<div class="what"><b>태초, 그리고 아멘</b><br>하루 3~4장, 1년 동안 성경을 처음부터 끝까지 함께 읽는 여정입니다. 월~토에는 구약을 일어난 순서대로, 평일에는 신약 한 장을, 주일에는 시편을 읽어요.</div>
+<div class="verse">주의 말씀은 내 발에 등이요 내 길에 빛이니이다<cite>시편 119:105 · 개역한글</cite></div>
+<button class="btn grad" id="go" type="button">선물 받고 1년의 여정 시작하기</button>
+</article>
+<div class="foot"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 1961</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p></div>
+</main>
+<script>
+(function(){
+var q=new URLSearchParams(location.search);
+function g(k,n){return (q.get(k)||'').trim().slice(0,n);}
+var to=g('t',20),fr=g('f',20),m=g('m',300),v=q.get('v')==='1';
+var $=function(id){return document.getElementById(id);};
+if(to)$('h').textContent=to+'님에게\n선물이 도착했어요';
+if(to)$('h').style.whiteSpace='pre-line';
+if(fr)$('fr').textContent='보낸 사람 · '+fr;
+$('to').textContent=to?('To. '+to):'To. 소중한 당신에게';
+$('msg').textContent=m||'올해는 성경을 처음부터 끝까지 함께 읽어 보고 싶어서, 이 선물을 보내요.';
+$('sg').textContent=fr?('From. '+fr):'';
+if(v)$('vc').style.display='block';
+var opened=false,w=$('w');
+function burst(){var cols=['#FFE7A3','#F28AA0','#C7B8F5','#FFFFFF','#F3D27A','#E98CA5'],W=innerWidth,H=innerHeight;
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ for(var i=0;i<90;i++){var e=document.createElement('div');e.className='p';var c=cols[i%cols.length],r=Math.random();
+  e.innerHTML=r<.35?'<svg width="'+(14+Math.random()*16)+'" viewBox="0 0 24 24"><path fill="'+c+'" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.6 4.5c2 0 3.6 1.1 4.4 2.6.8-1.5 2.4-2.6 4.4-2.6 3.6 0 5.7 3.8 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>':r<.7?'<svg width="'+(10+Math.random()*18)+'" viewBox="0 0 24 24"><path fill="'+c+'" d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>':'<span style="display:block;width:8px;height:13px;border-radius:2px;background:'+c+'"></span>';
+  e.style.left=(Math.random()*W)+'px';document.body.appendChild(e);
+  var dx=(Math.random()-.5)*140,rot=(Math.random()-.5)*480;
+  e.animate([{transform:'translate(0,0) rotate(0)'},{transform:'translate('+dx+'px,'+(H*.5)+'px) rotate('+rot/2+'deg)',offset:.5},{transform:'translate('+(-dx*.5)+'px,'+(H+80)+'px) rotate('+rot+'deg)'}],{duration:2600+Math.random()*2200,delay:Math.random()*900,easing:'cubic-bezier(.3,.1,.6,1)',fill:'both'}).onfinish=function(){this.effect.target.remove();};}}
+function open(){if(opened)return;opened=true;try{if(navigator.vibrate)navigator.vibrate([20,40,30]);}catch(e){}
+ var lid=$('lid');lid.animate([{transform:'translate(0,0) rotate(0)'},{transform:'translate(-40px,-210px) rotate(-28deg)',opacity:0}],{duration:900,easing:'cubic-bezier(.3,.7,.3,1)',fill:'forwards'});
+ w.classList.add('open');burst();setTimeout(function(){$('st').style.height='250px';},700);}
+$('op').onclick=open;$('st').onclick=open;
+setInterval(function(){if(!opened){w.classList.add('wiggle');setTimeout(function(){w.classList.remove('wiggle');},650);}},3600);
+$('go').onclick=function(){try{localStorage.setItem('tam.giftNew',JSON.stringify({to:to,from:fr,msg:$('msg').textContent,voice:v,at:Date.now()}));}catch(e){}location.href='./';};
+})();
+</script>
+</body>
+</html>

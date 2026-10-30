@@ -9,6 +9,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="태초, 그리고 아멘">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="태초, 그리고 아멘">
+<meta property="og:title" content="태초, 그리고 아멘 — 매년 성경 1독">
+<meta property="og:description" content="하루 3~4장, 1년이면 ‘태초에’에서 ‘아멘’까지. 개역한글 본문으로 함께 읽어요.">
+<meta property="og:image" content="https://taechoamen.com/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://taechoamen.com/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
@@ -164,6 +172,26 @@ footer.legal p{margin:0}
 .lt-sub{text-align:center;font-size:13px;color:#6E5E72;margin:0}
 .lt-foot{margin-top:28px;font-size:10.5px;line-height:1.6;color:#7C6F78;text-align:center}
 .lt-foot p{margin:0}
+.sheet{position:fixed;inset:0;z-index:70;background:rgba(14,20,36,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet-in{width:100%;max-width:560px;max-height:92vh;overflow:auto;background:linear-gradient(180deg,#FFF8F1,#FBEFE6);border-radius:26px 26px 0 0;padding:22px 20px calc(env(safe-area-inset-bottom,0px) + 22px);animation:sh .35s cubic-bezier(.2,1,.3,1);color:#2A2440}
+@keyframes sh{0%{transform:translateY(60px);opacity:0}100%{transform:none;opacity:1}}
+.sheet h2{margin:4px 0 4px;font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.02em}
+.sheet .lead2{margin:0 0 16px;font-size:14px;color:#6E5E72;line-height:1.6}
+.sheet label{display:block;font-size:13px;font-weight:700;color:#5B4E9E;margin:14px 0 6px}
+.sheet input,.sheet select,.sheet textarea{width:100%;min-height:48px;border:1px solid #E6D6DE;border-radius:14px;background:#fff;color:#2A2440;padding:10px 14px;font:16px/1.5 var(--sans)}
+.sheet textarea{min-height:96px;resize:vertical}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;margin-top:18px;border:0;border-radius:999px;background:linear-gradient(135deg,#5B4E9E,#C47FA6 60%,#F3A88A);color:#fff;font-size:17px;font-weight:700}
+.gbtn.alt{background:#FEE500;color:#191600;margin-top:10px}
+.gbtn.ghost2{background:transparent;color:#5B4E9E;border:1.5px solid #CDBBE0;margin-top:10px;font-size:15px;min-height:48px}
+.sheet .x{float:right;border:0;background:none;font-size:15px;color:#8A7F96;min-height:44px;padding:0 4px}
+.sheet .note2{font-size:12px;color:#8A7F96;line-height:1.6;margin:10px 0 0}
+.rec-say{flex-basis:100%;margin:4px 0 2px;padding:10px 12px;border-radius:12px;background:var(--soft);font-size:13.5px;line-height:1.6;color:var(--ink2)}
+.rec-say b{color:var(--ink)}
+.giftnote{background:rgba(255,251,244,.94);border-radius:22px;padding:20px 22px;margin:0 0 14px;box-shadow:0 18px 40px rgba(35,42,99,.2)}
+.giftnote small{display:block;font-size:12px;letter-spacing:.12em;font-weight:700;color:#B0607E;margin-bottom:8px}
+.giftnote p{margin:0;font-family:var(--serif);font-size:17px;line-height:1.8;color:#2A2440;white-space:pre-wrap}
+.giftnote .by{margin-top:8px;text-align:right;font-size:15px}
+.cel-gift{display:block;margin:10px auto 0;border:0;background:none;color:var(--accent);font-size:14px;font-weight:700;min-height:40px;text-decoration:underline;text-underline-offset:3px}
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .fx .p{position:absolute;top:-60px;left:0;will-change:transform}
 .cel{position:fixed;inset:0;z-index:51;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,20,36,.18)}
@@ -255,10 +283,11 @@ function memo(){
  var fin=S.fin||[];
  return '<div class="memo"><small>처음 시작한 날</small><b>'+fmtDate(parse(S.since),true)+'</b><p>오늘로 <span class="dn">'+sinceN()+'일째</span>'+(fin.length?' · 1독 완료 <span class="dn">'+fin.length+'회</span>':'')+'</p>'+(fin.length?'<p>'+fin.map(function(f,k){return (k+1)+'독: '+fmtDate(parse(f),true)+' 완료';}).join('<br>')+'</p>':'')+'</div>';}
 function letterArt(){return '<svg class="lt-art" viewBox="0 280 1024 700" aria-hidden="true"><defs><radialGradient id="lsun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8E7"/><stop offset=".45" stop-color="#FFE3AE"/><stop offset="1" stop-color="#FFC98A" stop-opacity="0"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE9C2" stop-opacity=".75"/><stop offset=".5" stop-color="#FFC9A0" stop-opacity=".25"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient><clipPath id="labove"><rect x="0" y="0" width="1024" height="640"/></clipPath></defs><g fill="#FFF6E0"><circle cx="236" cy="330" r="5" opacity=".85"/><circle cx="318" cy="300" r="3" opacity=".6"/><circle cx="770" cy="320" r="4" opacity=".75"/><circle cx="168" cy="420" r="3" opacity=".5"/><path d="M742 380c4 26 14 36 40 40-26 4-36 14-40 40-4-26-14-36-40-40 26-4 36-14 40-40z" opacity=".95"/></g><circle cx="512" cy="640" r="300" fill="url(#lglow)"/><g clip-path="url(#labove)"><circle cx="512" cy="640" r="168" fill="url(#lsun)"/><circle cx="512" cy="640" r="128" fill="#FFF4DD"/></g><path d="M150 640H262M762 640H874" stroke="#FFF6E6" stroke-width="6" stroke-linecap="round" opacity=".9"/><g transform="translate(0 30)"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44c56-40 140-54 224-44v150c-84-10-168 4-224 44z" fill="#FFFFFF" fill-opacity=".16"/><g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44"/><path d="M512 760c56-40 140-54 224-44v-150c-84-10-168 4-224 44"/><path d="M512 610v150"/></g></g></svg>';}
-function showLetter(){
+function showLetter(gift){
  var el=document.createElement('div');el.className='lt';el.setAttribute('role','dialog');el.setAttribute('aria-label','태초, 그리고 아멘 — 첫 편지');
  el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 1독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
- '<article class="paper"><p class="to">처음 이 앱을 펼친 당신에게</p>'+
+ (gift?'<div class="giftnote"><small>🎁 '+esc(gift.from?josa(gift.from,'이','가')+' 보낸 선물':'소중한 사람이 보낸 선물')+'</small><p>'+esc(gift.msg||'')+'</p>'+(gift.from?'<p class="by">From. '+esc(gift.from)+'</p>':'')+'</div>':'')+
+ '<article class="paper"><p class="to">'+(gift&&gift.to?esc(gift.to)+'님에게':'처음 이 앱을 펼친 당신에게')+'</p>'+
  '<p>성경은 많은 집에 한 권쯤 꽂혀 있는 책입니다. 그런데 처음부터 끝까지 읽어 본 사람은 생각보다 드뭅니다.</p>'+
  '<p>어려워서가 아니라, 길을 정해 두지 않았기 때문일지도 모릅니다. 그래서 그 길을 미리 닦아 두었습니다.</p>'+
  '<div class="plan"><b>하루 3~4장, 15~20분.</b><br>월~토에는 구약을 일어난 순서대로,<br>평일에는 신약 한 장을, 주일에는 시편을 읽습니다.<br>그렇게 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</div>'+
@@ -334,6 +363,7 @@ function vNotes(){
  return h+legal();}
 function vSet(){
  var h='<h1 class="vh">설정</h1>';
+ h+='<button class="gbtn" type="button" id="giftopen" style="margin:4px 0 18px">🎁 소중한 사람에게 선물하기</button>';
  h+='<div class="row"><div><b>시작일</b><span>'+fmtDate(START,true)+'부터 1년</span></div><input type="date" id="sd" value="'+S.start+'" aria-label="시작일 선택" style="min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:0 10px;font:15px var(--sans)"></div>';
  h+='<div class="row" style="border-bottom:0;padding-top:0"><span style="margin:0">해마다 1월 1일에 새로 시작하는 것이 기본입니다. 중간에 합류했다면 오늘 날짜로 시작해도 됩니다. 시작일마다 진도가 따로 저장됩니다.</span></div>';
  h+='<div class="row" style="padding-top:0"><div></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="ghost" id="sdjan">1월 1일로</button><button class="ghost" id="sdtoday">오늘부터</button></div></div>';
@@ -341,7 +371,7 @@ function vSet(){
  h+='<div class="row"><div><b>글자 크기</b><span>본문 글자</span></div><div class="seg">'+['작게','보통','크게','아주'].map(function(l,k){return '<button data-fs="'+k+'" aria-pressed="'+(S.fs===k)+'">'+l+'</button>';}).join('')+'</div></div>';
  h+='<div class="row"><div><b>화면</b><span>긴 본문은 밝게를 권합니다</span></div><div class="seg">'+[['light','밝게'],['dark','어둡게'],['auto','자동']].map(function(x){return '<button data-th="'+x[0]+'" aria-pressed="'+(S.theme===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div>';
  h+='<div class="row"><div><b>첫 편지</b><span>처음 열었을 때 보았던 편지</span></div><button class="ghost" id="ltshow">다시 보기</button></div>';
- h+='<div class="row"><div><b>녹음 모드</b><span>장마다 내 목소리로 녹음하고, 파일로 보낼 수 있습니다</span></div><div class="seg"><button data-rec="1" aria-pressed="'+(!!S.rec)+'">켜기</button><button data-rec="0" aria-pressed="'+(!S.rec)+'">끄기</button></div></div>';
+ h+='<div class="row"><div><b>녹음 모드</b><span>장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있습니다</span></div><div class="seg"><button data-rec="1" aria-pressed="'+(!!S.rec)+'">켜기</button><button data-rec="0" aria-pressed="'+(!S.rec)+'">끄기</button></div></div>';
  h+='<div class="row"><div><b>홈 화면에 추가</b><span>아이폰: 사파리 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴 → 홈 화면에 추가</span></div></div>';
  h+='<div class="row"><div><b>이번 1년 진도 초기화</b><span>읽음 표시만 지웁니다. 질문과 밑줄은 남습니다.</span></div><button class="ghost danger" id="rs">초기화</button></div>';
  h+='<div class="about"><h4>읽기 계획</h4><p>월~토 구약(시편 제외)을 사건 순서대로 2~3장, 월~금 신약 1장, 주일 시편 3편. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p><p style="margin-top:12px"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</p><p style="margin-top:12px">진도·질문·밑줄은 이 기기의 브라우저에만 저장됩니다. 기기를 바꾸거나 방문 기록을 지우면 사라집니다.</p></div>';
@@ -373,6 +403,7 @@ function bind(){
  var si=document.getElementById('since');if(si)si.onchange=function(){if(si.value){S.since=si.value;save();toast('처음 시작한 날: '+fmtDate(parse(si.value),true));}};
  if(e=document.getElementById('sdjan'))e.onclick=function(){var t=today0();setStart(ymd(new Date(t.getMonth()>=9?t.getFullYear()+1:t.getFullYear(),0,1)));};
  if(e=document.getElementById('sdtoday'))e.onclick=function(){setStart(ymd(today0()));};
+ if(e=document.getElementById('giftopen'))e.onclick=function(){showGift();};
  if(e=document.getElementById('ltshow'))e.onclick=function(){showLetter();};
  document.querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){S.rec=b.dataset.rec==='1';save();render();}});
  document.querySelectorAll('[data-fs]').forEach(function(b){b.onclick=function(){S.fs=+b.dataset.fs;save();applySet();render();}});
@@ -444,8 +475,8 @@ function celebrate(i,o){
  var vs='';if(!all&&!gk&&hsh(seed+'v')%5<2){var V=VERSES[rotIdx(i,VERSES.length,11,'v')];vs='<blockquote class="cel-v">'+esc(BIB[V[0]][V[1]-1][V[2]-1])+'<cite>'+KO[V[0]]+' '+V[1]+':'+V[2]+'</cite></blockquote>';}
  var sub=all?'1독 완료를 기록했습니다. 해마다 다시, 태초에서 아멘까지.':o.n+'일째 완료 · 내일은 무엇이 쏟아질까요?';
  var cel=document.createElement('div');cel.className='cel';cel.setAttribute('role','dialog');cel.setAttribute('aria-label','완료 축하');
- cel.innerHTML='<div class="cel-card"><small>오늘의 선물 · '+t.name+'</small><b>'+m+'</b>'+gk+vs+'<p>'+sub+'</p><button type="button">고마워요</button></div>';
- document.body.appendChild(cel);var close=function(){cel.remove();};cel.querySelector('button').onclick=close;cel.onclick=function(e){if(e.target===cel)close();};
+ cel.innerHTML='<div class="cel-card"><small>오늘의 선물 · '+t.name+'</small><b>'+m+'</b>'+gk+vs+'<p>'+sub+'</p><button type="button">고마워요</button><button type="button" class="cel-gift" id="celgift">이 기쁨을 소중한 사람에게 선물하기</button></div>';
+ document.body.appendChild(cel);var close=function(){cel.remove();};cel.querySelector('button').onclick=close;cel.querySelector('#celgift').onclick=function(){close();showGift();};cel.onclick=function(e){if(e.target===cel)close();};
  setTimeout(function(){if(cel.parentNode)cel.querySelector('button').focus();},50);
 }
 window.__celebrate=function(i,o){celebrate(i,o||{n:1});};
@@ -464,8 +495,8 @@ function fillAudio(){document.querySelectorAll('.aud[data-ac]').forEach(function
  Promise.all([aget(k),hostedCheck(k)]).then(function(r){var local=r[0],host=r[1],h='';
   if(local||host)h+='<button class="play" data-play="'+k+'">'+(PLAYK===k?'■ 멈추기':'▶ '+(local?'내 녹음 듣기':'낭독 듣기'))+'</button>';
   if(S.rec){h+='<button class="rec'+(RECK===k?' on':'')+'" data-recb="'+k+'">'+(RECK===k?'■ 녹음 마치기':(local?'● 다시 녹음':'● 녹음'))+'</button>';
-   if(RECK===k)h+='<span class="tm" id="rt">'+fmtT(RECT)+'</span>';
-   if(local&&RECK!==k)h+='<button data-share="'+k+'">보내기</button><button data-adel="'+k+'">삭제</button>';}
+   if(RECK===k){var a2=k.split('-').map(Number),nm=S.myName||'○○';h+='<span class="tm" id="rt">'+fmtT(RECT)+'</span><div class="rec-say">먼저 이렇게 말해 주세요 — <b>“오늘 성경은 '+esc(josa(nm,'이','가'))+' 읽은 '+KO[a2[0]]+' '+a2[1]+'장입니다.”</b></div>';}
+   if(local&&RECK!==k)h+='<button data-giftv="'+k+'">🎁 목소리 선물</button><button data-share="'+k+'">파일 보내기</button><button data-adel="'+k+'">삭제</button>';}
   box.innerHTML=h;bindAudio(box);});});}
 function fmtT(sec){return Math.floor(sec/60)+':'+pad(sec%60,2);}
 function bindAudio(box){
@@ -475,6 +506,7 @@ function bindAudio(box){
  box.querySelectorAll('[data-recb]').forEach(function(b){b.onclick=function(){var k=b.dataset.recb;
   if(RECR&&RECK===k){RECR.stop();return;}
   if(RECR){toast('다른 장을 녹음하는 중입니다');return;}
+  if(!S.myName){var nn=prompt('녹음 인사말에 넣을 이름을 적어 주세요 (예: 엄마, 지민)','');if(nn&&nn.trim()){S.myName=nn.trim().slice(0,20);save();}}
   if(!navigator.mediaDevices||!window.MediaRecorder){toast('이 브라우저는 녹음을 지원하지 않습니다');return;}
   navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){var ch=[];var mr=new MediaRecorder(st);RECR=mr;RECK=k;RECT=0;
    mr.ondataavailable=function(e){if(e.data&&e.data.size)ch.push(e.data);};
@@ -487,11 +519,49 @@ function bindAudio(box){
   try{file=new File([rec.blob],name,{type:rec.type});}catch(e){file=null;}
   if(file&&navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({files:[file],title:name}).catch(function(){});}
   else{var u=URL.createObjectURL(rec.blob),l=document.createElement('a');l.href=u;l.download=name;document.body.appendChild(l);l.click();l.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);}});};});
+ box.querySelectorAll('[data-giftv]').forEach(function(b){b.onclick=function(){showGift(b.dataset.giftv);};});
  box.querySelectorAll('[data-adel]').forEach(function(b){b.onclick=function(){if(confirm('이 장의 녹음을 지울까요?'))adel(b.dataset.adel).then(function(){toast('녹음을 지웠습니다');fillAudio();});};});
+}
+function josa(n,a,b){if(!n)return n;var c=n.charCodeAt(n.length-1);if(c<0xAC00||c>0xD7A3)return n+a+'('+b+')';return n+(((c-0xAC00)%28)?a:b);}
+function giftBase(){var h=location.hostname;if(/taechoamen\.com$|github\.io$|^localhost$|^127\./.test(h))return new URL('gift.html',location.href.split('#')[0].split('?')[0]).href;return 'https://taechoamen.com/gift.html';}
+function listRecs(){return idb().then(function(db){return new Promise(function(res){var r=db.transaction('rec').objectStore('rec').getAllKeys();r.onsuccess=function(){res(r.result||[]);};r.onerror=function(){res([]);};});}).catch(function(){return [];});}
+function shareVoice(k){var a=k.split('-').map(Number);return aget(k).then(function(rec){if(!rec){toast('녹음이 없습니다');return;}
+ var ext=/mp4|m4a|aac/.test(rec.type)?'m4a':/webm/.test(rec.type)?'webm':/ogg/.test(rec.type)?'ogg':'audio';
+ var name=pad(a[0]+1,2)+'-'+pad(a[1],3)+'_'+KO[a[0]]+'_'+a[1]+'장.'+ext,file;
+ try{file=new File([rec.blob],name,{type:rec.type});}catch(e){file=null;}
+ if(file&&navigator.canShare&&navigator.canShare({files:[file]}))return navigator.share({files:[file],title:name}).catch(function(){});
+ var u=URL.createObjectURL(rec.blob),l=document.createElement('a');l.href=u;l.download=name;document.body.appendChild(l);l.click();l.remove();setTimeout(function(){URL.revokeObjectURL(u);},4000);});}
+function showGift(preVoice){
+ var sh=document.createElement('div');sh.className='sheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-label','선물하기');
+ var dm='올해는 성경을 처음부터 끝까지 함께 읽어 보고 싶어서, 이 선물을 보내요.';
+ sh.innerHTML='<div class="sheet-in"><button class="x" type="button" id="gx">닫기</button><h2>소중한 사람에게<br>성경 1년을 선물해요</h2><p class="lead2">카카오톡으로 보내면, 받는 사람에게 리본 묶인 선물함이 열립니다.</p>'+
+ '<label for="gt">받는 사람</label><input id="gt" maxlength="20" placeholder="예: 지민" value="'+esc(S.lastTo||'')+'">'+
+ '<label for="gf">보내는 사람</label><input id="gf" maxlength="20" placeholder="예: 엄마" value="'+esc(S.myName||'')+'">'+
+ '<label for="gm">마음을 담은 한마디</label><textarea id="gm" maxlength="300">'+esc(S.lastMsg||dm)+'</textarea>'+
+ '<label for="gv">목소리 선물 (선택)</label><select id="gv"><option value="">목소리 없이 보내기</option></select>'+
+ '<p class="note2" id="gvn">녹음 모드에서 녹음한 장을 함께 보낼 수 있어요.</p>'+
+ '<button class="gbtn alt" type="button" id="gs">카카오톡으로 선물 보내기</button>'+
+ '<button class="gbtn ghost2" type="button" id="gvs" style="display:none">🎧 음성 파일도 보내기</button>'+
+ '<button class="gbtn ghost2" type="button" id="gc">선물 링크 복사하기</button>'+
+ '<p class="note2">공유 화면에서 카카오톡을 고르고, 받을 사람의 대화방을 선택하세요. 목소리 선물은 같은 대화방에 음성 파일로 한 번 더 보냅니다.</p></div>';
+ document.body.appendChild(sh);
+ var $=function(id){return sh.querySelector('#'+id);};
+ listRecs().then(function(keys){keys.sort(function(x,y){var a=x.split('-').map(Number),b=y.split('-').map(Number);return a[0]-b[0]||a[1]-b[1];});
+  keys.forEach(function(k){var a=k.split('-').map(Number),o=document.createElement('option');o.value=k;o.textContent='내 목소리 · '+KO[a[0]]+' '+a[1]+'장';$('gv').appendChild(o);});
+  if(!keys.length)$('gvn').textContent='아직 녹음한 장이 없어요. 설정 → 녹음 모드를 켜면 장마다 녹음할 수 있어요.';
+  if(preVoice&&keys.indexOf(preVoice)>=0)$('gv').value=preVoice;});
+ function url(){var p=new URLSearchParams();var t=$('gt').value.trim(),f=$('gf').value.trim(),m=$('gm').value.trim();if(t)p.set('t',t);if(f)p.set('f',f);if(m&&m!==dm)p.set('m',m);if($('gv').value)p.set('v','1');S.lastTo=t;S.myName=f;S.lastMsg=m;save();return giftBase()+(p.toString()?'?'+p.toString():'');}
+ function text(){var t=$('gt').value.trim(),f=$('gf').value.trim();return (t?t+'님, ':'')+(f?josa(f,'이','가')+' ':'')+'성경 1년을 선물했어요 🎁\n선물함을 열어 보세요.';}
+ $('gx').onclick=function(){sh.remove();};sh.onclick=function(e){if(e.target===sh)sh.remove();};
+ $('gs').onclick=function(){var u=url(),tx=text();if($('gv').value)$('gvs').style.display='flex';
+  if(navigator.share)navigator.share({title:'태초, 그리고 아멘 — 선물이 도착했어요',text:tx,url:u}).catch(function(){});else copy(tx+'\n'+u);};
+ $('gvs').onclick=function(){shareVoice($('gv').value);};
+ $('gc').onclick=function(){copy(text()+'\n'+url());if($('gv').value)$('gvs').style.display='flex';};
 }
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
-applySet();render();if(!S.seenLetter)showLetter();
+applySet();render();var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
+if(GN){S.gift=GN;save();showLetter(GN);}else if(!S.seenLetter)showLetter();
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
 </script>
