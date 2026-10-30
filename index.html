@@ -175,6 +175,9 @@ footer.legal p{margin:0}
 .lm h3{margin:0 0 3px;font-size:15px;font-weight:700;color:#2A2440}
 .lm p{margin:0;font-size:12.5px;line-height:1.65;color:#5E5470}
 .lm p em{font-style:normal;font-weight:700;color:#B0607E;margin-right:6px}
+.lt-cta{position:sticky;bottom:0;margin:20px -20px 0;padding:30px 20px calc(env(safe-area-inset-bottom,0px) + 14px);background:linear-gradient(180deg,rgba(251,239,223,0) 0,rgba(251,239,223,.97) 28px,#FBEFDF 100%);z-index:2}
+.lt-cta .lt-btn{margin:0 0 8px}
+.lt-cta .lt-sub{margin:0}
 .lt-btn{display:block;width:100%;margin:22px 0 10px;min-height:58px;border:0;border-radius:999px;background:linear-gradient(135deg,#5B4E9E,#C47FA6 60%,#F3A88A);color:#fff;font-size:17px;font-weight:700;letter-spacing:.02em;box-shadow:0 12px 30px rgba(91,78,158,.35)}
 .lt-sub{text-align:center;font-size:13px;color:#6E5E72;margin:0}
 .lt-foot{margin-top:28px;font-size:10.5px;line-height:1.6;color:#7C6F78;text-align:center}
@@ -380,6 +383,9 @@ function memo(){
  var fin=S.fin||[];
  return '<div class="memo"><small>처음 시작한 날</small><b>'+fmtDate(parse(S.since),true)+'</b><p>오늘로 <span class="dn">'+sinceN()+'일째</span>'+(fin.length?' · 일독 완료 <span class="dn">'+fin.length+'회</span>':'')+'</p>'+(fin.length?'<p>'+fin.map(function(f,k){return (k+1)+'번째 일독: '+fmtDate(parse(f),true)+' 완료';}).join('<br>')+'</p>':'')+'</div>';}
 function letterArt(){return '<svg class="lt-art" viewBox="0 280 1024 700" aria-hidden="true"><defs><radialGradient id="lsun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8E7"/><stop offset=".45" stop-color="#FFE3AE"/><stop offset="1" stop-color="#FFC98A" stop-opacity="0"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE9C2" stop-opacity=".75"/><stop offset=".5" stop-color="#FFC9A0" stop-opacity=".25"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient><clipPath id="labove"><rect x="0" y="0" width="1024" height="640"/></clipPath></defs><g fill="#FFF6E0"><circle cx="236" cy="330" r="5" opacity=".85"/><circle cx="318" cy="300" r="3" opacity=".6"/><circle cx="770" cy="320" r="4" opacity=".75"/><circle cx="168" cy="420" r="3" opacity=".5"/><path d="M742 380c4 26 14 36 40 40-26 4-36 14-40 40-4-26-14-36-40-40 26-4 36-14 40-40z" opacity=".95"/></g><circle cx="512" cy="640" r="300" fill="url(#lglow)"/><g clip-path="url(#labove)"><circle cx="512" cy="640" r="168" fill="url(#lsun)"/><circle cx="512" cy="640" r="128" fill="#FFF4DD"/></g><path d="M150 640H262M762 640H874" stroke="#FFF6E6" stroke-width="6" stroke-linecap="round" opacity=".9"/><g transform="translate(0 30)"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44c56-40 140-54 224-44v150c-84-10-168 4-224 44z" fill="#FFFFFF" fill-opacity=".16"/><g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44"/><path d="M512 760c56-40 140-54 224-44v-150c-84-10-168 4-224 44"/><path d="M512 610v150"/></g></g></svg>';}
+function ctaHtml(){var t=todayIdx(),ref='';
+ if(t<0)ref=fmtDate(START,true)+'에 시작합니다';else if(t>=LEN)ref='이번 1년 일정이 끝났습니다';else ref='오늘 · '+refOf(t);
+ return '<div class="lt-cta"><button class="lt-btn" type="button" id="ltgo">'+(S.seenLetter?'오늘의 말씀 펼치기':'1년의 여정 시작하기')+'</button><p class="lt-sub">'+esc(ref)+'</p></div>';}
 function showLetter(gift){
  var el=document.createElement('div');el.className='lt';el.setAttribute('role','dialog');el.setAttribute('aria-label','태초, 그리고 아멘 — 첫 편지');
  el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 일독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
@@ -396,8 +402,7 @@ function showLetter(gift){
 '<p class="em bless">이 일독의 여정이<br>해마다 이어지기를,<br>사랑하는 이의 손에 전해지기를,<br>그리고 그 모든 날이 귀하고 충만하기를 축복합니다.</p>'+
  '<div class="sig"><span class="gk2" lang="grc">οὐκ ἐγκακοῦμεν</span><span class="gk2s">우리가 낙심하지 아니하노니 · 고린도후서 4:16</span><span class="from">태초, 그리고 아멘 드림</span></div></article>'+
  (function(){var M=monthBooks(false),h='<section class="lt-months"><h2>열두 달, 한 편의 이야기</h2><p class="sub2">구약은 사건이 일어난 순서대로 놓았습니다. 한 달 한 달이 이야기의 한 장(章)이 됩니다.</p>';Object.keys(M).map(Number).sort(function(a,b){return a-b}).forEach(function(k){var m=M[k];h+='<div class="lm"><b>'+monthLabel(m,k)+'</b><div><h3>'+ERA[k]+'</h3><p><em>구약</em>'+m.ot.join(' · ')+(m.nt.length?'<br><em>신약</em>'+m.nt.join(' · '):'')+'</p></div></div>';});return h+'<p class="sub2" style="margin:12px 0 0">주일마다 시편을 함께 읽습니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p></section>';})()+
- '<button class="lt-btn" type="button" id="ltgo">1년의 여정 시작하기</button>'+
- '<p class="lt-sub">'+fmtDate(START,true)+'부터 · 시작일은 설정에서 바꿀 수 있어요</p>'+
+ ctaHtml()+
  '<div class="lt-foot"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 1961</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p></div></div>';
  document.body.appendChild(el);
  el.querySelector('#ltgo').onclick=function(){S.seenLetter=1;save();el.remove();window.scrollTo(0,0);};
@@ -688,7 +693,7 @@ function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
 applySet();render();var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
-if(GN){S.gift=GN;save();showLetter(GN);}else if(!S.seenLetter)showLetter();
+if(GN){S.gift=GN;save();showLetter(GN);}else showLetter();
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
 </script>
