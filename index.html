@@ -155,7 +155,10 @@ footer.legal p{margin:0}
 .paper p{font-family:var(--serif);font-size:17px;line-height:1.95;margin:0 0 16px;color:#2A2440;word-break:keep-all}
 .paper p.em{color:#7A4E8C}
 .paper .plan{margin:6px 0 20px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#F7EEF6,#FDF0E4);font-family:var(--sans);font-size:14px;line-height:1.8;color:#4A3F5E}
-.paper .plan b{color:#2A2440}
+.paper .plan b{color:#2A2440;display:block;margin-bottom:8px}
+.paper .pl{display:flex;gap:12px;padding:6px 0;border-top:1px solid rgba(122,78,140,.12)}
+.paper .pl span{flex:0 0 52px;font-weight:700;color:#7A4E8C}
+.paper .plan .pn{font-family:var(--sans);font-size:13px;line-height:1.7;margin:8px 0 0;color:#5E5470}
 .paper .sig{margin:26px 0 0;padding-top:20px;border-top:1px dashed #E3D3D8;text-align:right}
 .paper .gk2{display:block;font-family:'Noto Serif',serif;font-style:italic;font-size:22px;color:#7A4E8C}
 .paper .gk2s{display:block;font-size:12px;color:#8A7F96;margin:4px 0 14px}
@@ -290,7 +293,7 @@ function showLetter(gift){
  '<article class="paper"><p class="to">'+(gift&&gift.to?esc(gift.to)+'님에게':'처음 이 앱을 펼친 당신에게')+'</p>'+
  '<p>성경은 많은 집에 한 권쯤 꽂혀 있는 책입니다. 그런데 처음부터 끝까지 읽어 본 사람은 생각보다 드뭅니다.</p>'+
  '<p>어려워서가 아니라, 길을 정해 두지 않았기 때문일지도 모릅니다. 그래서 그 길을 미리 닦아 두었습니다.</p>'+
- '<div class="plan"><b>하루 3~4장, 15~20분.</b><br>월~토에는 구약을 일어난 순서대로,<br>평일에는 신약 한 장을, 주일에는 시편을 읽습니다.<br>그렇게 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</div>'+
+ '<div class="plan"><b>하루 3~4장, 15~20분</b><div class="pl"><span>월~금</span>구약 2~3장 + 신약 1장</div><div class="pl"><span>토</span>구약 2~3장</div><div class="pl"><span>주일</span>시편 3편</div><p class="pn">구약은 사건이 일어난 순서대로 읽고, 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</p></div>'+
  '<p>밀리는 날도 있을 거예요. 괜찮습니다. 다시 펼친 날, 그날부터 이어 가면 됩니다.</p>'+
  '<p>읽다가 생긴 질문 하나, 마음에 남은 구절 하나면 충분합니다.</p>'+
  '<p class="em">1년 뒤, 마지막 장을 덮는 당신을 기다리고 있을게요.</p>'+
@@ -374,7 +377,7 @@ function vSet(){
  h+='<div class="row"><div><b>녹음 모드</b><span>장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있습니다</span></div><div class="seg"><button data-rec="1" aria-pressed="'+(!!S.rec)+'">켜기</button><button data-rec="0" aria-pressed="'+(!S.rec)+'">끄기</button></div></div>';
  h+='<div class="row"><div><b>홈 화면에 추가</b><span>아이폰: 사파리 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴 → 홈 화면에 추가</span></div></div>';
  h+='<div class="row"><div><b>이번 1년 진도 초기화</b><span>읽음 표시만 지웁니다. 질문과 밑줄은 남습니다.</span></div><button class="ghost danger" id="rs">초기화</button></div>';
- h+='<div class="about"><h4>읽기 계획</h4><p>월~토 구약(시편 제외)을 사건 순서대로 2~3장, 월~금 신약 1장, 주일 시편 3편. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p><p style="margin-top:12px"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</p><p style="margin-top:12px">진도·질문·밑줄은 이 기기의 브라우저에만 저장됩니다. 기기를 바꾸거나 방문 기록을 지우면 사라집니다.</p></div>';
+ h+='<div class="about"><h4>읽기 계획</h4><p>월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편</p><p style="margin-top:8px">구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p><p style="margin-top:12px"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</p><p style="margin-top:12px">진도·질문·밑줄은 이 기기의 브라우저에만 저장됩니다. 기기를 바꾸거나 방문 기록을 지우면 사라집니다.</p></div>';
  return h+legal();}
 function render(){
  var v=document.getElementById('view');
