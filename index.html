@@ -199,6 +199,66 @@ footer.legal p{margin:0}
 .giftnote p{margin:0;font-family:var(--serif);font-size:17px;line-height:1.8;color:#2A2440;white-space:pre-wrap}
 .giftnote .by{margin-top:8px;text-align:right;font-size:15px}
 .cel-gift{display:block;margin:10px auto 0;border:0;background:none;color:var(--accent);font-size:14px;font-weight:700;min-height:40px;text-decoration:underline;text-underline-offset:3px}
+
+/* ===== 계절 디자인 ===== */
+.top-in{padding:14px 20px 10px}
+.brand small{display:none}
+.brand{font-size:18px}
+.ring{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--mute)}
+.ring svg{display:block}
+.hero{position:relative;overflow:hidden;border-radius:30px;padding:22px 20px 18px;margin:6px 0 16px;color:var(--h-ink);isolation:isolate}
+.hero .bl{position:absolute;border-radius:50%;filter:blur(38px);z-index:-2}
+.hero .gr{position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .art{position:absolute;right:14px;top:14px;width:96px;height:96px;opacity:var(--h-art-op);color:var(--h-ink)}
+.h-en{display:block;font-size:10.5px;letter-spacing:.28em;font-weight:600;opacity:.82}
+.h-lab{display:block;font-size:13px;margin-top:5px;opacity:.7}
+.h-mid{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:46px}
+.h-date{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1;letter-spacing:-.04em}
+.h-sub{font-size:12.5px;margin-top:9px;opacity:.72}
+.h-nav{display:flex;gap:8px;flex-shrink:0}
+.h-nav button,.glass{background:var(--glass);border:1px solid var(--glass-b);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--h-ink)}
+.h-nav button{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0}
+.h-nav button:disabled{opacity:.35}
+.h-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.h-chips a{font-size:12.5px;padding:7px 12px;border-radius:999px;text-decoration:none;min-height:34px;display:inline-flex;align-items:center}
+.h-chips a em{font-style:normal;font-weight:700;font-size:10px;letter-spacing:.06em;margin-right:6px;opacity:.75}
+.today-btn{margin:-6px auto 10px}
+.alarm-note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:18px;background:var(--card);border:1px solid var(--line);margin-bottom:14px;font-size:14px;line-height:1.6;color:var(--ink2)}
+.alarm-note b{display:block;color:var(--ink);font-size:14.5px}
+.alarm-note .ic2{flex:0 0 34px;height:34px;border-radius:50%;background:var(--acc-grad);color:#fff;display:flex;align-items:center;justify-content:center}
+.big{border-radius:999px;background:var(--acc-grad);box-shadow:0 10px 24px var(--acc-shadow)}
+.big.on{background:transparent;box-shadow:none}
+.tabs{left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);border:0;border-radius:999px;padding-bottom:0;background:var(--tabbg);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(20,20,50,.14)}
+.tabs-in{padding:0 6px}
+.tabs button{min-height:60px}
+main{padding-bottom:130px}
+.chap h2 small{letter-spacing:.14em}
+/* 설정 */
+.grp{margin:0 0 22px}
+.grp>h2{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--accent);margin:0 0 8px 6px}
+.cells{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.cell{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:12px 16px;border-top:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;font-size:15px;color:var(--ink)}
+.cells>.cell:first-child,.cells>details:first-child>summary{border-top:0}
+.cell b{font-weight:500;font-size:15px}
+.cell span.d{display:block;font-size:12.5px;color:var(--mute);margin-top:2px;line-height:1.5}
+.cell .chev{color:var(--mute);flex-shrink:0}
+.cell input[type=time],.cell input[type=date]{min-height:40px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);padding:0 10px;font:15px var(--sans)}
+.sw{appearance:none;-webkit-appearance:none;width:52px;height:32px;border-radius:999px;background:var(--line);position:relative;flex-shrink:0;cursor:pointer;transition:background .2s;margin:0}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .2s}
+.sw:checked{background:var(--accent)}
+.sw:checked::after{transform:translateX(20px)}
+.mini{display:flex;gap:6px}
+.mini button{min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-size:13px;color:var(--ink2)}
+details.cell-d{display:block;border-top:1px solid var(--line)}
+.cells>details.cell-d:first-child{border-top:0}
+details.cell-d>summary.cell{border-top:0;list-style:none;cursor:pointer}
+details.cell-d>summary::-webkit-details-marker{display:none}
+details.cell-d[open] .chev{transform:rotate(90deg)}
+.dbody{padding:0 16px 16px;font-size:13.5px;line-height:1.75;color:var(--ink2)}
+.gift-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;border:0;border-radius:999px;background:var(--acc-grad);color:#fff;font-size:16px;font-weight:700;margin:2px 0 24px;box-shadow:0 10px 24px var(--acc-shadow)}
+.cell.danger b{color:#B3261E}
+.seg button{min-width:44px}
+
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .fx .p{position:absolute;top:-60px;left:0;will-change:transform}
 .cel{position:fixed;inset:0;z-index:51;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,20,36,.18)}
@@ -219,7 +279,7 @@ footer.legal p{margin:0}
 <body>
 <header class="top"><div class="top-in">
 <div class="brand"><small>매년 성경 일독</small>태초, 그리고 아멘</div>
-<div class="pill" aria-live="polite"><span id="pc">0 / 363</span><span class="pbar"><i id="pb" style="width:0"></i></span></div>
+<div class="ring" aria-live="polite"><svg width="26" height="26" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="var(--line)" stroke-width="4"/><circle id="pb" cx="18" cy="18" r="15" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="94.2" transform="rotate(-90 18 18)"/></svg><span id="pc">0 / 363</span></div>
 </div></header>
 <main id="view"></main>
 <nav class="tabs" aria-label="화면 이동"><div class="tabs-in">
@@ -238,7 +298,7 @@ var KO=D.ko,BIB=D.bible,PT=D.titles,SQ=D.seq;
 var WD='일월화수목금토';
 var ERA=["태초와 족장","요셉에서 출애굽으로","율법과 광야","가나안 입성","사사 시대와 왕국의 시작","다윗과 솔로몬","지혜서와 왕국 분열","두 왕국의 몰락","선지자들의 경고","유다의 마지막 시간","예루살렘 함락과 포로기","귀환, 그리고 마지막 장"];
 var LBL={ot:"구약",nt:"신약",ps:"시편"};
-var K='tam.v2',S={start:null,cyc:{},notes:{},hl:{},fs:1,theme:'light'};
+var K='tam.v2',S={start:null,cyc:{},notes:{},hl:{},fs:1,theme:'light',alarm:{on:false,time:'21:00'}};
 try{var raw=localStorage.getItem(K);if(raw){var o=JSON.parse(raw);for(var k in o)S[k]=o[k];}}catch(e){}
 function save(){try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}}
 function ymd(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
@@ -272,8 +332,38 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 function fmtDate(d,y){return (y?d.getFullYear()+'년 ':'')+(d.getMonth()+1)+'월 '+d.getDate()+'일 '+WD[d.getDay()]+'요일';}
 function fmtD(i){return fmtDate(dateOf(i));}
 function refOf(i){var p=PLAN[i];if(!p.length)return '보충일';var g=[];p.forEach(function(s){var last=g[g.length-1];if(last&&last.b===s[1]&&last.e===s[2]-1)last.e=s[2];else g.push({b:s[1],s:s[2],e:s[2]});});return g.map(function(x){return KO[x.b]+' '+(x.s===x.e?x.s:x.s+'–'+x.e);}).join(' · ');}
-function applySet(){document.documentElement.style.setProperty('--fs',[17,19,21,24][S.fs]+'px');if(S.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',S.theme);}
-function prog(){var n=0,d=DONE();for(var k in d)if(d[k])n++;document.getElementById('pc').textContent=n+' / '+READ_DAYS;document.getElementById('pb').style.width=(n/READ_DAYS*100)+'%';return n;}
+
+var SEASONS={
+ spring:{k:'봄',en:'SPRING',lab:'벚꽃이 피는 계절',acc:'#B8486F',acc2:'#F2A98F',accD:'#F3A8BF',base:'#FFF7F8',line:'#F1DDE3',hl:'rgba(255,182,206,.55)',ink:'#3A2A34',dark:false,
+  bl:[['#FFC2D4',-40,-60,260],['#FFE2C6',180,40,240],['#E8D6FF',60,120,220],['#FFF0F3',220,-80,200]],
+  art:'<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 92c30-10 52-30 66-58"/><path d="M48 70c8-2 14-8 16-16"/><g transform="translate(76 30)"><path d="M0 0c-6-8-2-16 0-18 2 2 6 10 0 18zM0 0c8-4 16 0 18 2-2 2-10 6-18-2zM0 0c4 8 0 16-2 18-2-2-4-10 2-18zM0 0c-8 4-16 0-18-2 2-2 10-6 18 2zM0 0c-8-2-14-10-14-14 4 0 12 4 14 14z"/></g><g transform="translate(56 58) rotate(30) scale(.8)"><path d="M0 0c-6-8-2-16 0-18 2 2 6 10 0 18zM0 0c8-4 16 0 18 2-2 2-10 6-18-2zM0 0c4 8 0 16-2 18-2-2-4-10 2-18zM0 0c-8 4-16 0-18-2 2-2 10-6 18 2z"/></g></g>',
+  fx:'petal'},
+ summer:{k:'여름',en:'SUMMER',lab:'푸르게 자라는 계절',acc:'#1D7362',acc2:'#7CCBB8',accD:'#7FD3BE',base:'#F3FBF8',line:'#D5EBE2',hl:'rgba(150,226,210,.55)',ink:'#1E3A36',dark:false,
+  bl:[['#A6E8DE',-40,-50,250],['#BFE2FF',200,-40,240],['#FFF3B0',170,90,200],['#D8F5E6',20,120,220]],
+  art:'<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="62" cy="34" r="15"/><path d="M62 10v6M62 52v6M38 34h6M80 34h6M45 17l4 4M75 47l4 4M45 51l4-4M75 21l4-4"/><path d="M8 78c10-6 20-6 30 0s20 6 30 0 20-6 30 0M14 92c10-6 20-6 30 0s20 6 30 0 20-6 30 0"/></g>',
+  fx:'leaf'},
+ autumn:{k:'가을',en:'AUTUMN',lab:'열매 맺는 계절',acc:'#9E4E26',acc2:'#E5A06A',accD:'#F0B184',base:'#FBF5EE',line:'#EEDFCF',hl:'rgba(246,186,140,.55)',ink:'#3A2A26',dark:false,
+  bl:[['#F6B48A',-30,-40,250],['#E9A2B0',200,-30,230],['#C7B4EC',150,100,220],['#FFDDB0',0,110,220]],
+  art:'<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M50 8l7 18 13-7-3 20 18-3-10 15 14 7-19 6 4 14-18-7-6 23-6-23-18 7 4-14-19-6 14-7-10-15 18 3-3-20 13 7z" transform="translate(4 0) scale(.92)"/><path d="M50 40v58"/></g>',
+  fx:'maple'},
+ winter:{k:'겨울',en:'WINTER',lab:'고요히 기다리는 계절',acc:'#3A5890',acc2:'#7C93C7',accD:'#A9BCE6',base:'#F4F6FB',line:'#DCE3EF',hl:'rgba(170,190,235,.55)',ink:'#FFFFFF',dark:true,
+  bl:[['#2C3A6B',-40,-60,300],['#5D6FB0',200,-40,240],['#9DB3E6',140,100,220],['#C9C3F2',-10,110,200]],
+  art:'<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M70 24a20 20 0 1 0 14 34 16 16 0 0 1-14-34z"/><path d="M24 21v18M16 25.5l16 9M16 34.5l16-9M36 61v18M28 65.5l16 9M28 74.5l16-9M14 77v18M6 81.5l16 9M6 90.5l16-9"/></g>',
+  fx:'snow'}
+};
+function seasonKey(d){var m=d.getMonth()+1;return (m>=3&&m<=5)?'spring':(m>=6&&m<=8)?'summer':(m>=9&&m<=11)?'autumn':'winter';}
+var SK=((location.hash.match(/season=(\w+)/)||[])[1])||seasonKey(new Date());if(!SEASONS[SK])SK=seasonKey(new Date());var SE=SEASONS[SK];
+function isDarkMode(){return S.theme==='dark'||(S.theme==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);}
+function applySeason(){var r=document.documentElement.style,dk=isDarkMode(),a=dk?SE.accD:SE.acc;
+ r.setProperty('--accent',a);r.setProperty('--acc-grad','linear-gradient(120deg,'+SE.acc+','+SE.acc2+')');r.setProperty('--acc-shadow',SE.acc+'44');r.setProperty('--done',a);
+ r.setProperty('--hl',SE.hl);
+ if(!dk){r.setProperty('--bg',SE.base);r.setProperty('--line',SE.line);r.setProperty('--tabbg','rgba(255,255,255,.78)');}
+ else{['--bg','--line'].forEach(function(v){r.removeProperty(v);});r.setProperty('--tabbg','rgba(21,29,49,.82)');}
+ r.setProperty('--h-ink',SE.dark?'#FFFFFF':SE.ink);r.setProperty('--glass',SE.dark?'rgba(255,255,255,.16)':'rgba(255,255,255,.55)');r.setProperty('--glass-b',SE.dark?'rgba(255,255,255,.32)':'rgba(255,255,255,.85)');r.setProperty('--h-art-op',SE.dark?'.9':'.55');
+ var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',dk?'#0E1424':SE.base);}
+function heroBg(){return (SE.dark?'<div class="bl" style="inset:0;width:auto;height:auto;border-radius:0;filter:none;background:#24305C"></div>':'<div class="bl" style="inset:0;width:auto;height:auto;border-radius:0;filter:none;background:#fff"></div>')+SE.bl.map(function(b){return '<div class="bl" style="left:'+b[1]+'px;top:'+b[2]+'px;width:'+b[3]+'px;height:'+b[3]+'px;background:'+b[0]+'"></div>';}).join('')+'<div class="gr"></div><svg class="art" viewBox="0 0 100 100" aria-hidden="true">'+SE.art+'</svg>';}
+function applySet(){document.documentElement.style.setProperty('--fs',[17,19,21,24][S.fs]+'px');if(S.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',S.theme);applySeason();}
+function prog(){var n=0,d=DONE();for(var k in d)if(d[k])n++;document.getElementById('pc').textContent=n+' / '+READ_DAYS;document.getElementById('pb').setAttribute('stroke-dashoffset',(94.2*(1-n/READ_DAYS)).toFixed(1));return n;}
 function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('show')},1600);}
 function verses(b,c){var v=BIB[b][c-1],h='',i=0;while(i<v.length){var j=i;while(j+1<v.length&&v[j+1]===v[i])j++;var key=b+'-'+c+'-'+(i+1);h+='<p class="v'+(S.hl[key]?' hl':'')+'" id="v-'+key+'" data-k="'+key+'" data-e="'+(j+1)+'"><sup>'+(i===j?(i+1):(i+1)+'–'+(j+1))+'</sup><span><span class="t">'+esc(v[i])+'</span></span></p>';i=j+1;}return h;}
 function legal(){return '<footer class="legal"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 (1961, 저작권 보호기간 만료)</p><p>원장번호 JS-2610-904</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p><p>무단 복제·전재·배포·변형 및 생성형 AI를 이용한 학습·분석·유사·파생 콘텐츠 제작을 금합니다. 위반 시 관련 법령에 따른 책임을 물을 수 있습니다.</p></footer>';}
@@ -321,16 +411,18 @@ var ORD=['첫째','둘째','셋째','넷째','다섯째','여섯째','일곱째'
 function monthLabel(m,k){return janStart()?(k+1)+'월':ORD[k]+' 달';}
 function vToday(){
  var i=cur,p=PLAN[i],d=dateOf(i),t=todayIdx(),h='',dn=DONE();
- h+='<div class="daynav"><button class="ic" id="prev" aria-label="전날"'+(i===0?' disabled':'')+'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div class="dtitle"><b>'+fmtD(i)+'</b><span>'+(i+1)+'일째 · '+LEN+'일 중</span></div><button class="ic" id="next" aria-label="다음 날"'+(i===LEN-1?' disabled':'')+'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button></div>';
+ var cm0=eraIdx(i);
+ h+='<section class="hero" aria-label="오늘의 본문">'+heroBg()+'<span class="h-en">'+SE.en+' · '+SE.k+'</span><span class="h-lab">'+SE.lab+'</span>'+
+  '<div class="h-mid"><div><div class="h-date">'+(d.getMonth()+1)+'월 '+d.getDate()+'일</div><div class="h-sub">'+WD[d.getDay()]+'요일 · '+(i+1)+'일째 · '+ERA[cm0]+'</div></div>'+
+  '<div class="h-nav"><button id="prev" aria-label="전날"'+(i===0?' disabled':'')+'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><button id="next" aria-label="다음 날"'+(i===LEN-1?' disabled':'')+'><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button></div></div>'+
+  (p.length?'<div class="h-chips">'+p.map(function(s,k){return '<a class="glass" href="#c'+k+'"><em>'+LBL[s[0]]+'</em>'+KO[s[1]]+' '+s[2]+'</a>';}).join('')+'</div>':'')+'</section>';
+ if(alarmDue()&&i===t)h+='<div class="alarm-note" role="status"><span class="ic2" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4L2.5 6.5M19 4l2.5 2.5"/></svg></span><div><b>영혼의 알람시계</b>아직 오늘의 말씀을 펼치지 않았어요. 잠깐이면 충분합니다.</div></div>';
  if(t>=0&&t<LEN&&t!==i)h+='<button class="today-btn" id="gotoday">오늘 읽을 곳으로</button>';
  h+=annivMsg();
  if(t<0)h+='<div class="banner"><b>'+fmtDate(START,true)+'에 시작합니다.</b> 시작까지 '+(-t)+'일 남았습니다. 첫날 본문을 미리 볼 수 있습니다.</div>';
  if(t>=LEN)h+='<div class="banner"><b>이번 1년 일정이 끝났습니다.</b> 남은 날을 지도에서 마저 읽거나, 새 1년을 시작하세요.<br><button class="ghost" id="newcyc" style="margin-top:10px">새 1년 시작하기</button></div>';
- var cm=eraIdx(i);
- h+='<div class="era"><b>'+ERA[cm]+'</b><span>'+(janStart()?(cm+1)+'월의 이야기':ORD[cm]+' 달의 이야기')+'</span></div>';
  if(!p.length){var m=missed();h+='<div class="rest-box"><h2>오늘은 보충일입니다</h2><p>그동안 밀린 날을 채우거나, 적어 둔 질문과 밑줄을 다시 읽어 보세요.</p>'+(m.length?'<div class="misslist">'+m.slice(0,30).map(function(x){return '<button data-go="'+x+'">'+(dateOf(x).getMonth()+1)+'/'+dateOf(x).getDate()+'</button>';}).join('')+'</div>':'<p><b>밀린 날이 없습니다.</b></p>')+'</div>';}
  else{
-  h+='<div class="chips">'+p.map(function(s,k){return '<a href="#c'+k+'"><em>'+LBL[s[0]]+'</em>'+KO[s[1]]+' '+s[2]+'</a>';}).join('')+'</div>';
   h+='<p class="hint">구절을 누르면 밑줄이 그어지고, 다시 누르면 지워집니다. 밑줄은 ‘밑줄’ 탭에 모입니다.</p>';
   p.forEach(function(s,k){h+='<section class="chap" id="c'+k+'"><h2>'+KO[s[1]]+' '+s[2]+'장<small>'+LBL[s[0]]+'</small></h2>'+(s[1]===18&&PT[s[2]]?'<p class="ptitle">['+esc(PT[s[2]])+']</p>':'')+'<div class="aud" data-ac="'+s[1]+'-'+s[2]+'"></div><div class="vs">'+verses(s[1],s[2])+'</div></section>';});
  }
@@ -372,19 +464,30 @@ function vNotes(){
  else{h+='<button class="ghost" id="cp" style="margin-bottom:16px">질문 전체 복사하기</button>';ks.forEach(function(k){var d=parse(k),i=Math.round((d-START)/864e5);h+='<button class="note"'+(i>=0&&i<LEN?' data-go="'+i+'"':'')+'><small>'+fmtDate(d,true)+' · '+esc(S.notes[k].r||'')+'</small><p>'+esc(S.notes[k].t)+'</p></button>';});}
  return h+legal();}
 function vSet(){
+ var chev='<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+ var al=S.alarm||{on:false,time:'21:00'};
  var h='<h1 class="vh">설정</h1>';
- h+='<button class="gbtn" type="button" id="giftopen" style="margin:4px 0 18px">🎁 소중한 사람에게 선물하기</button>';
- h+='<div class="row"><div><b>시작일</b><span>'+fmtDate(START,true)+'부터 1년</span></div><input type="date" id="sd" value="'+S.start+'" aria-label="시작일 선택" style="min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:0 10px;font:15px var(--sans)"></div>';
- h+='<div class="row" style="border-bottom:0;padding-top:0"><span style="margin:0">해마다 1월 1일에 새로 시작하는 것이 기본입니다. 중간에 합류했다면 오늘 날짜로 시작해도 됩니다. 시작일마다 진도가 따로 저장됩니다.</span></div>';
- h+='<div class="row" style="padding-top:0"><div></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="ghost" id="sdjan">1월 1일로</button><button class="ghost" id="sdtoday">오늘부터</button></div></div>';
- h+='<div class="row"><div><b>처음 시작한 날</b><span>첫 ‘다 읽었어요’를 누른 날이 자동으로 기록됩니다</span></div><input type="date" id="since" value="'+(S.since||'')+'" aria-label="처음 시작한 날" style="min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:0 10px;font:15px var(--sans)"></div>';
- h+='<div class="row"><div><b>글자 크기</b><span>본문 글자</span></div><div class="seg">'+['작게','보통','크게','아주'].map(function(l,k){return '<button data-fs="'+k+'" aria-pressed="'+(S.fs===k)+'">'+l+'</button>';}).join('')+'</div></div>';
- h+='<div class="row"><div><b>화면</b><span>긴 본문은 밝게를 권합니다</span></div><div class="seg">'+[['light','밝게'],['dark','어둡게'],['auto','자동']].map(function(x){return '<button data-th="'+x[0]+'" aria-pressed="'+(S.theme===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div>';
- h+='<div class="row"><div><b>첫 편지</b><span>처음 열었을 때 보았던 편지</span></div><button class="ghost" id="ltshow">다시 보기</button></div>';
- h+='<div class="row"><div><b>녹음 모드</b><span>장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있습니다</span></div><div class="seg"><button data-rec="1" aria-pressed="'+(!!S.rec)+'">켜기</button><button data-rec="0" aria-pressed="'+(!S.rec)+'">끄기</button></div></div>';
- h+='<div class="row"><div><b>홈 화면에 추가</b><span>아이폰: 사파리 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴 → 홈 화면에 추가</span></div></div>';
- h+='<div class="row"><div><b>이번 1년 진도 초기화</b><span>읽음 표시만 지웁니다. 질문과 밑줄은 남습니다.</span></div><button class="ghost danger" id="rs">초기화</button></div>';
- h+='<div class="about"><h4>읽기 계획</h4><p>월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편</p><p style="margin-top:8px">구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p><p style="margin-top:12px"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</p><p style="margin-top:12px">진도·질문·밑줄은 이 기기의 브라우저에만 저장됩니다. 기기를 바꾸거나 방문 기록을 지우면 사라집니다.</p></div>';
+ h+='<button class="gift-cta" type="button" id="giftopen">🎁 소중한 사람에게 선물하기</button>';
+ h+='<section class="grp"><h2>영혼의 알람시계</h2><div class="cells">'+
+  '<label class="cell"><div><b>알람 켜기</b><span class="d">정한 시각까지 오늘의 말씀을 펼치지 않았다면 알려 드려요</span></div><input type="checkbox" class="sw" id="alon"'+(al.on?' checked':'')+' aria-label="알람 켜기"></label>'+
+  '<div class="cell"><b>알람 시각</b><input type="time" id="altime" value="'+esc(al.time)+'" aria-label="알람 시각"></div>'+
+  '<button class="cell" type="button" id="alcal"><div><b>휴대폰 캘린더에 매일 알람 넣기</b><span class="d">앱을 열지 않아도 이 시각에 휴대폰이 알려 줍니다</span></div>'+chev+'</button></div></section>';
+ h+='<section class="grp"><h2>나의 일독</h2><div class="cells">'+
+  '<div class="cell"><div><b>시작일</b><span class="d">'+fmtDate(START,true)+'부터 1년</span></div><input type="date" id="sd" value="'+S.start+'" aria-label="시작일"></div>'+
+  '<div class="cell"><span class="d" style="margin:0">빠르게 바꾸기</span><div class="mini"><button type="button" id="sdjan">1월 1일</button><button type="button" id="sdtoday">오늘부터</button></div></div>'+
+  '<div class="cell"><div><b>처음 시작한 날</b><span class="d">첫 ‘다 읽었어요’를 누른 날이 기록돼요</span></div><input type="date" id="since" value="'+(S.since||'')+'" aria-label="처음 시작한 날"></div></div></section>';
+ h+='<section class="grp"><h2>읽기 화면</h2><div class="cells">'+
+  '<div class="cell"><b>글자 크기</b><div class="seg">'+['작게','보통','크게','아주'].map(function(l,k){return '<button data-fs="'+k+'" aria-pressed="'+(S.fs===k)+'">'+l+'</button>';}).join('')+'</div></div>'+
+  '<div class="cell"><b>화면</b><div class="seg">'+[['light','밝게'],['dark','어둡게'],['auto','자동']].map(function(x){return '<button data-th="'+x[0]+'" aria-pressed="'+(S.theme===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div></div></section>';
+ h+='<section class="grp"><h2>함께하기</h2><div class="cells">'+
+  '<button class="cell" type="button" id="ltshow"><b>첫 편지 다시 보기</b>'+chev+'</button>'+
+  '<label class="cell"><div><b>녹음 모드</b><span class="d">장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있어요</span></div><input type="checkbox" class="sw" id="recsw"'+(S.rec?' checked':'')+' aria-label="녹음 모드"></label></div></section>';
+ h+='<section class="grp"><h2>도움말</h2><div class="cells">'+
+  '<details class="cell-d"><summary class="cell"><b>홈 화면에 앱 추가하기</b>'+chev+'</summary><div class="dbody">아이폰: 사파리 아래 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴(⋮) → 홈 화면에 추가</div></details>'+
+  '<details class="cell-d"><summary class="cell"><b>읽기 계획</b>'+chev+'</summary><div class="dbody">월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편<br><br>구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</div></details>'+
+  '<details class="cell-d"><summary class="cell"><b>세 개의 원어</b>'+chev+'</summary><div class="dbody"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</div></details>'+
+  '<details class="cell-d"><summary class="cell"><b>내 기록은 어디에 저장되나요</b>'+chev+'</summary><div class="dbody">진도·질문·밑줄·녹음은 이 휴대폰의 브라우저에만 저장됩니다. 휴대폰을 바꾸거나 방문 기록을 지우면 사라지니, 밑줄과 질문은 각 탭의 ‘전체 복사하기’로 옮겨 두세요.</div></details></div></section>';
+ h+='<section class="grp"><div class="cells"><button class="cell danger" type="button" id="rs"><div><b>이번 1년 진도 초기화</b><span class="d">읽음 표시만 지웁니다. 질문과 밑줄은 남아요</span></div></button></div></section>';
  return h+legal();}
 function render(){
  var v=document.getElementById('view');
@@ -415,6 +518,10 @@ function bind(){
  if(e=document.getElementById('sdtoday'))e.onclick=function(){setStart(ymd(today0()));};
  if(e=document.getElementById('giftopen'))e.onclick=function(){showGift();};
  if(e=document.getElementById('ltshow'))e.onclick=function(){showLetter();};
+ var ao=document.getElementById('alon');if(ao)ao.onchange=function(){S.alarm=S.alarm||{time:'21:00'};S.alarm.on=ao.checked;save();toast(ao.checked?'알람을 켰어요 · '+S.alarm.time:'알람을 껐어요');};
+ var at=document.getElementById('altime');if(at)at.onchange=function(){if(!at.value)return;S.alarm=S.alarm||{on:true};S.alarm.time=at.value;save();toast('알람 시각 · '+at.value);};
+ if(e=document.getElementById('alcal'))e.onclick=function(){addCal();};
+ var rsw=document.getElementById('recsw');if(rsw)rsw.onchange=function(){S.rec=rsw.checked;save();toast(rsw.checked?'녹음 모드를 켰어요':'녹음 모드를 껐어요');};
  document.querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){S.rec=b.dataset.rec==='1';save();render();}});
  document.querySelectorAll('[data-fs]').forEach(function(b){b.onclick=function(){S.fs=+b.dataset.fs;save();applySet();render();}});
  document.querySelectorAll('[data-th]').forEach(function(b){b.onclick=function(){S.theme=b.dataset.th;save();applySet();render();}});
@@ -464,8 +571,10 @@ function shape(t,c){var r=Math.random,sz;
  case 'sun':return '<svg width="'+(22+r()*22)+'" viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5" fill="'+c+'"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>';
  case 'moon':return r()<.4?'<svg width="'+(20+r()*18)+'" viewBox="0 0 24 24"><path fill="'+c+'" d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>':'<svg width="'+(10+r()*14)+'" viewBox="0 0 24 24"><path fill="'+c+'" d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z"/></svg>';
  case 'sprout':return '<svg width="'+(18+r()*16)+'" viewBox="0 0 24 24"><path d="M12 22V11" stroke="'+c+'" stroke-width="2" fill="none" stroke-linecap="round"/><path fill="'+c+'" d="M12 12C12 6 8 3 3 3c0 5 3 9 9 9zM12 10c0-4 3-7 9-7 0 5-3 7-9 7z"/></svg>';
+ case 'maple':return '<svg width="'+(14+r()*16)+'" viewBox="0 0 24 24"><path fill="'+c+'" d="M12 2l1.6 4.2 3-1.6-.8 4.6 4.2-.6-2.4 3.4 3.4 1.6-4.4 1.4 1 3.2-4.2-1.6L12 22l-1.4-5.4-4.2 1.6 1-3.2L3 13.6l3.4-1.6L4 8.6l4.2.6-.8-4.6 3 1.6z"/></svg>';
  case 'lamp':return '<svg width="'+(14+r()*14)+'" viewBox="0 0 16 24"><path fill="'+c+'" d="M8 0C10 5 14 8 14 13a6 6 0 0 1-12 0C2 8 6 5 8 0z"/><path fill="#FFF3C4" d="M8 9c1 2.5 2.6 4 2.6 6a2.6 2.6 0 0 1-5.2 0C5.4 13 7 11.5 8 9z"/></svg>';
  }}
+function SFX(){var m={petal:THEMES[5],leaf:THEMES[9],snow:THEMES[10],maple:{k:'maple',col:['#D9682B','#E8A33D','#B5452A','#F2C14E']}};return m[SE.fx];}
 function celebrate(i,o){
  var all=!!o.fin,t=all?{k:'all',name:'일독 완료'}:themeFor(i);
  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -473,7 +582,7 @@ function celebrate(i,o){
  if(!reduce){var fx=document.createElement('div');fx.className='fx';document.body.appendChild(fx);
   var W=innerWidth,H=innerHeight,list=all?THEMES:[t],cnt=all?150:(t.k==='rainbow'?22:110);
   var spark=THEMES[12];
-  for(var n=0;n<cnt;n++){var th=list[n%list.length];if(!all&&t.k!=='sparkle'&&n%7===0)th=spark;var c=th.col[Math.floor(Math.random()*th.col.length)];
+  for(var n=0;n<cnt;n++){var th=list[n%list.length];if(!all&&t.k!=='sparkle'&&n%7===0)th=spark;if(!all&&n%5===0)th=SFX();var c=th.col[Math.floor(Math.random()*th.col.length)];
    var el=document.createElement('div');el.className='p';el.innerHTML=shape(th,c);el.style.left=(Math.random()*W)+'px';fx.appendChild(el);
    var slow=/rainbow|love|words|bubble|butterfly|lamp|sun|moon/.test(th.k);
    var dx=(Math.random()-.5)*(th.k==='butterfly'?240:140),rot=(Math.random()-.5)*(slow?50:560),dur=(slow?3600:2600)+Math.random()*2400,dl=Math.random()*1800;
@@ -568,6 +677,14 @@ function showGift(preVoice){
  $('gvs').onclick=function(){shareVoice($('gv').value);};
  $('gc').onclick=function(){copy(text()+'\n'+url());if($('gv').value)$('gvs').style.display='flex';};
 }
+
+function alarmDue(){if(!S.alarm||!S.alarm.on)return false;var t=todayIdx();if(t<0||t>=LEN||!PLAN[t].length||DONE()[t])return false;var n=new Date(),hm=(S.alarm.time||'21:00').split(':');return n.getHours()*60+n.getMinutes()>=(+hm[0])*60+(+hm[1]);}
+function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new Date();var st=new Date(n.getFullYear(),n.getMonth(),n.getDate(),+hm[0],+hm[1]);if(st<n)st.setDate(st.getDate()+1);
+ function f(d){return d.getFullYear()+pad(d.getMonth()+1,2)+pad(d.getDate(),2)+'T'+pad(d.getHours(),2)+pad(d.getMinutes(),2)+'00';}
+ var u=giftBase().replace(/gift\.html.*$/,'');
+ var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//taechoamen//KR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:tam-alarm-'+Date.now()+'@taechoamen.com','DTSTAMP:'+f(n),'DTSTART:'+f(st),'DURATION:PT10M','RRULE:FREQ=DAILY','SUMMARY:영혼의 알람시계 · 오늘의 말씀','DESCRIPTION:태초\\, 그리고 아멘 — 오늘 읽을 곳을 펼쳐 보세요. '+u,'URL:'+u,'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:오늘의 말씀을 펼칠 시간이에요','TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+ var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),l=document.createElement('a');l.href=url;l.download='taechoamen-alarm.ics';document.body.appendChild(l);l.click();l.remove();setTimeout(function(){URL.revokeObjectURL(url);},8000);
+ toast('캘린더 창이 열리면 「추가」를 눌러 주세요');}
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
 applySet();render();var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
