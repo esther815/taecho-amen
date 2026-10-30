@@ -87,6 +87,8 @@ h1.vh{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-.0
 .month{margin-bottom:26px}
 .month h3{margin:0 0 4px;font-family:var(--serif);font-weight:600;font-size:19px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .month h3 span{font-family:var(--sans);font-size:12px;font-weight:400;color:var(--mute)}
+.mbooks{margin:4px 0 2px;font-size:13px;line-height:1.7;color:var(--ink2)}
+.mbooks em{font-style:normal;font-weight:700;color:var(--accent);margin-right:8px}
 .grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:8px}
 .grid .wd{font-size:11px;color:var(--mute);text-align:center;padding-bottom:2px}
 .grid button{aspect-ratio:1/1;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:12px;color:var(--ink2);padding:0;min-height:36px}
@@ -134,6 +136,34 @@ footer.legal p{margin:0}
 .aud button.rec{border-color:#B3261E;color:#B3261E;font-weight:700}
 .aud button.rec.on{background:#B3261E;color:#fff}
 .aud .tm{font-size:13px;color:var(--mute);align-self:center}
+.lt{position:fixed;inset:0;z-index:60;overflow-y:auto;-webkit-overflow-scrolling:touch;background:linear-gradient(180deg,#232A63 0%,#5B4E9E 26%,#C47FA6 44%,#F3A88A 58%,#FFD7A3 72%,#FBEFDF 100%);color:#2A2440}
+.lt::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lt-in{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 28px) 20px calc(env(safe-area-inset-bottom,0px) + 40px);position:relative;z-index:1}
+.lt-art{display:block;width:100%;max-width:340px;margin:0 auto -30px}
+.lt-kicker{text-align:center;color:#FFF3E2;font-size:12px;letter-spacing:.22em;font-weight:700;margin:0 0 6px}
+.lt-title{text-align:center;color:#FFFFFF;font-family:var(--serif);font-weight:400;font-size:40px;letter-spacing:-.03em;line-height:1.2;margin:0 0 26px;text-shadow:0 2px 18px rgba(35,42,99,.35)}
+.paper{background:rgba(255,251,244,.94);border-radius:26px;padding:32px 26px 30px;box-shadow:0 24px 60px rgba(35,42,99,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.paper .to{font-size:13px;color:#8A6A9E;letter-spacing:.04em;margin:0 0 20px;font-weight:500}
+.paper p{font-family:var(--serif);font-size:17px;line-height:1.95;margin:0 0 16px;color:#2A2440;word-break:keep-all}
+.paper p.em{color:#7A4E8C}
+.paper .plan{margin:6px 0 20px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#F7EEF6,#FDF0E4);font-family:var(--sans);font-size:14px;line-height:1.8;color:#4A3F5E}
+.paper .plan b{color:#2A2440}
+.paper .sig{margin:26px 0 0;padding-top:20px;border-top:1px dashed #E3D3D8;text-align:right}
+.paper .gk2{display:block;font-family:'Noto Serif',serif;font-style:italic;font-size:22px;color:#7A4E8C}
+.paper .gk2s{display:block;font-size:12px;color:#8A7F96;margin:4px 0 14px}
+.paper .from{font-family:var(--serif);font-size:16px;color:#2A2440}
+.lt-months{margin-top:18px;background:rgba(255,251,244,.94);border-radius:26px;padding:26px 22px 14px;box-shadow:0 24px 60px rgba(35,42,99,.18)}
+.lt-months h2{margin:0 0 4px;font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.02em;color:#2A2440}
+.lt-months .sub2{margin:0 0 14px;font-size:13px;color:#7A6E86;line-height:1.6}
+.lm{display:flex;gap:14px;padding:13px 0;border-top:1px solid #EFE2E6}
+.lm b{flex:0 0 52px;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;color:#7A4E8C;letter-spacing:-.02em}
+.lm h3{margin:0 0 3px;font-size:15px;font-weight:700;color:#2A2440}
+.lm p{margin:0;font-size:12.5px;line-height:1.65;color:#5E5470}
+.lm p em{font-style:normal;font-weight:700;color:#B0607E;margin-right:6px}
+.lt-btn{display:block;width:100%;margin:22px 0 10px;min-height:58px;border:0;border-radius:999px;background:linear-gradient(135deg,#5B4E9E,#C47FA6 60%,#F3A88A);color:#fff;font-size:17px;font-weight:700;letter-spacing:.02em;box-shadow:0 12px 30px rgba(91,78,158,.35)}
+.lt-sub{text-align:center;font-size:13px;color:#6E5E72;margin:0}
+.lt-foot{margin-top:28px;font-size:10.5px;line-height:1.6;color:#7C6F78;text-align:center}
+.lt-foot p{margin:0}
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .fx .p{position:absolute;top:-60px;left:0;will-change:transform}
 .cel{position:fixed;inset:0;z-index:51;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,20,36,.18)}
@@ -224,6 +254,32 @@ function memo(){
  if(!S.since)return '<div class="memo"><small>처음 시작한 날</small><b>아직 기록 전입니다</b><p>첫날 본문을 읽고 ‘다 읽었어요’를 누르면 그날이 처음 시작한 날로 기록됩니다.</p></div>';
  var fin=S.fin||[];
  return '<div class="memo"><small>처음 시작한 날</small><b>'+fmtDate(parse(S.since),true)+'</b><p>오늘로 <span class="dn">'+sinceN()+'일째</span>'+(fin.length?' · 1독 완료 <span class="dn">'+fin.length+'회</span>':'')+'</p>'+(fin.length?'<p>'+fin.map(function(f,k){return (k+1)+'독: '+fmtDate(parse(f),true)+' 완료';}).join('<br>')+'</p>':'')+'</div>';}
+function letterArt(){return '<svg class="lt-art" viewBox="0 280 1024 700" aria-hidden="true"><defs><radialGradient id="lsun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8E7"/><stop offset=".45" stop-color="#FFE3AE"/><stop offset="1" stop-color="#FFC98A" stop-opacity="0"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE9C2" stop-opacity=".75"/><stop offset=".5" stop-color="#FFC9A0" stop-opacity=".25"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient><clipPath id="labove"><rect x="0" y="0" width="1024" height="640"/></clipPath></defs><g fill="#FFF6E0"><circle cx="236" cy="330" r="5" opacity=".85"/><circle cx="318" cy="300" r="3" opacity=".6"/><circle cx="770" cy="320" r="4" opacity=".75"/><circle cx="168" cy="420" r="3" opacity=".5"/><path d="M742 380c4 26 14 36 40 40-26 4-36 14-40 40-4-26-14-36-40-40 26-4 36-14 40-40z" opacity=".95"/></g><circle cx="512" cy="640" r="300" fill="url(#lglow)"/><g clip-path="url(#labove)"><circle cx="512" cy="640" r="168" fill="url(#lsun)"/><circle cx="512" cy="640" r="128" fill="#FFF4DD"/></g><path d="M150 640H262M762 640H874" stroke="#FFF6E6" stroke-width="6" stroke-linecap="round" opacity=".9"/><g transform="translate(0 30)"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44c56-40 140-54 224-44v150c-84-10-168 4-224 44z" fill="#FFFFFF" fill-opacity=".16"/><g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44"/><path d="M512 760c56-40 140-54 224-44v-150c-84-10-168 4-224 44"/><path d="M512 610v150"/></g></g></svg>';}
+function showLetter(){
+ var el=document.createElement('div');el.className='lt';el.setAttribute('role','dialog');el.setAttribute('aria-label','태초, 그리고 아멘 — 첫 편지');
+ el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 1독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
+ '<article class="paper"><p class="to">처음 이 앱을 펼친 당신에게</p>'+
+ '<p>성경은 많은 집에 한 권쯤 꽂혀 있는 책입니다. 그런데 처음부터 끝까지 읽어 본 사람은 생각보다 드뭅니다.</p>'+
+ '<p>어려워서가 아니라, 길을 정해 두지 않았기 때문일지도 모릅니다. 그래서 그 길을 미리 닦아 두었습니다.</p>'+
+ '<div class="plan"><b>하루 3~4장, 15~20분.</b><br>월~토에는 구약을 일어난 순서대로,<br>평일에는 신약 한 장을, 주일에는 시편을 읽습니다.<br>그렇게 1년이면 ‘태초에’에서 ‘아멘’까지 닿습니다.</div>'+
+ '<p>밀리는 날도 있을 거예요. 괜찮습니다. 다시 펼친 날, 그날부터 이어 가면 됩니다.</p>'+
+ '<p>읽다가 생긴 질문 하나, 마음에 남은 구절 하나면 충분합니다.</p>'+
+ '<p class="em">1년 뒤, 마지막 장을 덮는 당신을 기다리고 있을게요.</p>'+
+ '<div class="sig"><span class="gk2" lang="grc">οὐκ ἐγκακοῦμεν</span><span class="gk2s">우리가 낙심하지 아니하노니 · 고린도후서 4:16</span><span class="from">태초, 그리고 아멘 드림</span></div></article>'+
+ (function(){var M=monthBooks(false),h='<section class="lt-months"><h2>열두 달, 한 편의 이야기</h2><p class="sub2">구약은 사건이 일어난 순서대로 놓았습니다. 한 달 한 달이 이야기의 한 장(章)이 됩니다.</p>';Object.keys(M).map(Number).sort(function(a,b){return a-b}).forEach(function(k){var m=M[k];h+='<div class="lm"><b>'+monthLabel(m,k)+'</b><div><h3>'+ERA[k]+'</h3><p><em>구약</em>'+m.ot.join(' · ')+(m.nt.length?'<br><em>신약</em>'+m.nt.join(' · '):'')+'</p></div></div>';});return h+'<p class="sub2" style="margin:12px 0 0">주일마다 시편을 함께 읽습니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</p></section>';})()+
+ '<button class="lt-btn" type="button" id="ltgo">1년의 여정 시작하기</button>'+
+ '<p class="lt-sub">'+fmtDate(START,true)+'부터 · 시작일은 설정에서 바꿀 수 있어요</p>'+
+ '<div class="lt-foot"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 1961</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p></div></div>';
+ document.body.appendChild(el);
+ el.querySelector('#ltgo').onclick=function(){S.seenLetter=1;save();el.remove();window.scrollTo(0,0);};
+}
+function janStart(){return START.getMonth()===0&&START.getDate()===1;}
+function eraIdx(i){return janStart()?Math.min(11,cycMonth(i)):Math.min(11,Math.floor(i*12/LEN));}
+function uniq(a){return a.filter(function(b,k){return a.indexOf(b)===k;});}
+function monthBooks(byCal){var out={},keys=[];for(var i=0;i<LEN;i++){var d=dateOf(i),k=byCal?d.getFullYear()*12+d.getMonth():eraIdx(i);if(!out[k]){out[k]={ot:[],nt:[],d:d,i:i};keys.push(k);}PLAN[i].forEach(function(s){if(s[0]==='ot')out[k].ot.push(KO[s[1]]);else if(s[0]==='nt')out[k].nt.push(KO[s[1]]);});}
+ keys.forEach(function(k){out[k].ot=uniq(out[k].ot);out[k].nt=uniq(out[k].nt);});return out;}
+var ORD=['첫째','둘째','셋째','넷째','다섯째','여섯째','일곱째','여덟째','아홉째','열째','열한째','열두째'];
+function monthLabel(m,k){return janStart()?(k+1)+'월':ORD[k]+' 달';}
 function vToday(){
  var i=cur,p=PLAN[i],d=dateOf(i),t=todayIdx(),h='',dn=DONE();
  h+='<div class="daynav"><button class="ic" id="prev" aria-label="전날"'+(i===0?' disabled':'')+'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div class="dtitle"><b>'+fmtD(i)+'</b><span>'+(i+1)+'일째 · '+LEN+'일 중</span></div><button class="ic" id="next" aria-label="다음 날"'+(i===LEN-1?' disabled':'')+'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button></div>';
@@ -231,8 +287,8 @@ function vToday(){
  h+=annivMsg();
  if(t<0)h+='<div class="banner"><b>'+fmtDate(START,true)+'에 시작합니다.</b> 시작까지 '+(-t)+'일 남았습니다. 첫날 본문을 미리 볼 수 있습니다.</div>';
  if(t>=LEN)h+='<div class="banner"><b>이번 1년 일정이 끝났습니다.</b> 남은 날을 지도에서 마저 읽거나, 새 1년을 시작하세요.<br><button class="ghost" id="newcyc" style="margin-top:10px">새 1년 시작하기</button></div>';
- var cm=cycMonth(i);
- h+='<div class="era"><b>'+ERA[Math.min(11,cm)]+'</b><span>'+(START.getMonth()===0&&START.getDate()===1?(cm+1)+'월의 이야기':(cm+1)+'번째 달의 이야기')+'</span></div>';
+ var cm=eraIdx(i);
+ h+='<div class="era"><b>'+ERA[cm]+'</b><span>'+(janStart()?(cm+1)+'월의 이야기':ORD[cm]+' 달의 이야기')+'</span></div>';
  if(!p.length){var m=missed();h+='<div class="rest-box"><h2>오늘은 보충일입니다</h2><p>그동안 밀린 날을 채우거나, 적어 둔 질문과 밑줄을 다시 읽어 보세요.</p>'+(m.length?'<div class="misslist">'+m.slice(0,30).map(function(x){return '<button data-go="'+x+'">'+(dateOf(x).getMonth()+1)+'/'+dateOf(x).getDate()+'</button>';}).join('')+'</div>':'<p><b>밀린 날이 없습니다.</b></p>')+'</div>';}
  else{
   h+='<div class="chips">'+p.map(function(s,k){return '<a href="#c'+k+'"><em>'+LBL[s[0]]+'</em>'+KO[s[1]]+' '+s[2]+'</a>';}).join('')+'</div>';
@@ -247,10 +303,10 @@ function vMap(){
  h+=memo();
  h+='<div class="stat"><div><b>'+n+'</b><span>읽은 날</span></div><div><b>'+Math.round(n/READ_DAYS*100)+'%</b><span>진도</span></div><div><b>'+m+'</b><span>밀린 날</span></div></div>';
  h+='<div class="legend"><span><i class="d"></i>그날 읽음</span><span><i class="l"></i>나중에 읽음</span><span><i class="m"></i>밀림</span><span><i></i>남은 날</span></div>';
- var y=START.getFullYear(),mo=START.getMonth(),idx=0;
+ var y=START.getFullYear(),mo=START.getMonth(),idx=0,MBc=monthBooks(true);
  while(idx<LEN){var first=new Date(y,mo,1),last=new Date(y,mo+1,0).getDate(),off=(first.getDay()+6)%7,base=Math.round((first-START)/864e5);
   var cm=(y-START.getFullYear())*12+mo-START.getMonth();
-  h+='<div class="month"><h3>'+y+'년 '+(mo+1)+'월<span>'+ERA[Math.min(11,cm)]+'</span></h3><div class="grid">'+'월화수목금토일'.split('').map(function(w){return '<div class="wd">'+w+'</div>';}).join('');
+  var MB=MBc[y*12+mo],mid=Math.max(0,Math.min(LEN-1,base+14)),ek=janStart()?Math.min(11,cm):eraIdx(mid);h+='<div class="month"><h3>'+y+'년 '+(mo+1)+'월<span>'+ERA[ek]+'</span></h3>'+(MB?'<p class="mbooks"><em>구약</em>'+MB.ot.join(' · ')+(MB.nt.length?'<br><em>신약</em>'+MB.nt.join(' · '):'')+'</p>':'')+'<div class="grid">'+'월화수목금토일'.split('').map(function(w){return '<div class="wd">'+w+'</div>';}).join('');
   for(var e=0;e<off;e++)h+='<div></div>';
   for(var dd=1;dd<=last;dd++){var i=base+dd-1;if(i<0||i>=LEN){h+='<div></div>';continue;}var c=[];if(dn[i])c.push(isLate(i)?'late':'done');else if(i<t&&PLAN[i].length)c.push('miss');if(i===t)c.push('today');if(!PLAN[i].length)c.push('rest');if(dateOf(i).getDay()===0)c.push('sun');
    h+='<button class="'+c.join(' ')+'" data-go="'+i+'" aria-label="'+fmtD(i)+' '+esc(refOf(i))+(dn[i]?(isLate(i)?' 나중에 읽음':' 그날 읽음'):'')+'">'+dd+'</button>';}
@@ -284,6 +340,7 @@ function vSet(){
  h+='<div class="row"><div><b>처음 시작한 날</b><span>첫 ‘다 읽었어요’를 누른 날이 자동으로 기록됩니다</span></div><input type="date" id="since" value="'+(S.since||'')+'" aria-label="처음 시작한 날" style="min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:0 10px;font:15px var(--sans)"></div>';
  h+='<div class="row"><div><b>글자 크기</b><span>본문 글자</span></div><div class="seg">'+['작게','보통','크게','아주'].map(function(l,k){return '<button data-fs="'+k+'" aria-pressed="'+(S.fs===k)+'">'+l+'</button>';}).join('')+'</div></div>';
  h+='<div class="row"><div><b>화면</b><span>긴 본문은 밝게를 권합니다</span></div><div class="seg">'+[['light','밝게'],['dark','어둡게'],['auto','자동']].map(function(x){return '<button data-th="'+x[0]+'" aria-pressed="'+(S.theme===x[0])+'">'+x[1]+'</button>';}).join('')+'</div></div>';
+ h+='<div class="row"><div><b>첫 편지</b><span>처음 열었을 때 보았던 편지</span></div><button class="ghost" id="ltshow">다시 보기</button></div>';
  h+='<div class="row"><div><b>녹음 모드</b><span>장마다 내 목소리로 녹음하고, 파일로 보낼 수 있습니다</span></div><div class="seg"><button data-rec="1" aria-pressed="'+(!!S.rec)+'">켜기</button><button data-rec="0" aria-pressed="'+(!S.rec)+'">끄기</button></div></div>';
  h+='<div class="row"><div><b>홈 화면에 추가</b><span>아이폰: 사파리 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴 → 홈 화면에 추가</span></div></div>';
  h+='<div class="row"><div><b>이번 1년 진도 초기화</b><span>읽음 표시만 지웁니다. 질문과 밑줄은 남습니다.</span></div><button class="ghost danger" id="rs">초기화</button></div>';
@@ -316,6 +373,7 @@ function bind(){
  var si=document.getElementById('since');if(si)si.onchange=function(){if(si.value){S.since=si.value;save();toast('처음 시작한 날: '+fmtDate(parse(si.value),true));}};
  if(e=document.getElementById('sdjan'))e.onclick=function(){var t=today0();setStart(ymd(new Date(t.getMonth()>=9?t.getFullYear()+1:t.getFullYear(),0,1)));};
  if(e=document.getElementById('sdtoday'))e.onclick=function(){setStart(ymd(today0()));};
+ if(e=document.getElementById('ltshow'))e.onclick=function(){showLetter();};
  document.querySelectorAll('[data-rec]').forEach(function(b){b.onclick=function(){S.rec=b.dataset.rec==='1';save();render();}});
  document.querySelectorAll('[data-fs]').forEach(function(b){b.onclick=function(){S.fs=+b.dataset.fs;save();applySet();render();}});
  document.querySelectorAll('[data-th]').forEach(function(b){b.onclick=function(){S.theme=b.dataset.th;save();applySet();render();}});
@@ -433,7 +491,7 @@ function bindAudio(box){
 }
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
-applySet();render();
+applySet();render();if(!S.seenLetter)showLetter();
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
 </script>
