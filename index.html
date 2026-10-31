@@ -272,7 +272,10 @@ details.cell-d[open] .chev{transform:rotate(90deg)}
 .hlitem .hen{display:block;margin-top:6px;font-family:'Literata',Georgia,serif;font-weight:380;font-size:15px;line-height:1.65;color:var(--ink2)}
 .ent.miss,.en.miss{font-style:italic;color:var(--mute)}
 .chap h2.en-t{font-family:'Literata',Georgia,serif;font-weight:400}
-.inst{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px auto 0;border:0;background:none;color:#6E5E72;font-size:13.5px;font-weight:600;min-height:40px;text-decoration:underline;text-underline-offset:3px}
+.inst{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin:10px 0 0;border:1.5px solid rgba(91,78,158,.35);background:rgba(255,255,255,.7);color:#5B4E9E;font-size:15px;font-weight:700;min-height:50px;border-radius:999px}
+.gbtns{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.gbtns .p{min-height:56px;border:0;border-radius:999px;background:linear-gradient(135deg,#5B4E9E,#C47FA6 60%,#F3A88A);color:#fff;font-size:17px;font-weight:700}
+.gbtns .s{min-height:44px;border:0;background:none;color:#8A7F96;font-size:14px}
 .guide{position:fixed;inset:0;z-index:80;background:rgba(14,20,36,.45);display:flex;align-items:flex-end;justify-content:center}
 .guide-in{position:relative;width:100%;max-width:520px;background:linear-gradient(180deg,#FFF8F1,#FBEFE6);border-radius:26px 26px 0 0;padding:24px 22px calc(env(safe-area-inset-bottom,0px) + 96px);color:#2A2440;animation:sh .35s cubic-bezier(.2,1,.3,1)}
 .guide-in h2{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:24px}
@@ -728,7 +731,11 @@ function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new
 var DEFERRED=null,UA=navigator.userAgent||'';
 var IS_IOS=/iphone|ipad|ipod/i.test(UA)||(/Macintosh/.test(UA)&&'ontouchend' in document),IS_AND=/android/i.test(UA),IS_KAKAO=/KAKAOTALK/i.test(UA),IS_INAPP=/NAVER|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|BAND\//i.test(UA);
 function isStandalone(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;}
-window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();DEFERRED=e;});
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();DEFERRED=e;var last=+(S.instAsk||0);if(!isStandalone()&&Date.now()-last>7*864e5)setTimeout(showInstallAsk,1200);});
+function showInstallAsk(){if(!DEFERRED||document.querySelector('.guide'))return;S.instAsk=Date.now();save();
+ var g=document.createElement('div');g.className='guide';g.setAttribute('role','dialog');g.setAttribute('aria-label','홈 화면에 설치');
+ g.innerHTML='<div class="guide-in" style="padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px)"><h2>홈 화면에 설치할까요?</h2><p class="lead2">아이콘 하나로 매일 바로 열 수 있어요.<br>‘설치하기’를 누르고, 뜨는 창에서 한 번 더 ‘설치’를 누르면 끝입니다.</p><div class="gbtns"><button class="p" type="button">설치하기</button><button class="s" type="button">나중에</button></div></div>';
+ document.body.appendChild(g);g.querySelector('.p').onclick=function(){g.remove();doInstall();};g.querySelector('.s').onclick=function(){g.remove();};g.onclick=function(e){if(e.target===g)g.remove();};}
 window.addEventListener('appinstalled',function(){DEFERRED=null;toast('홈 화면에 설치했어요');var b=document.querySelectorAll('[data-install]');b.forEach(function(x){x.remove();});});
 function installLabel(){if(IS_KAKAO)return IS_IOS?'사파리로 열어 설치하기':'브라우저로 열어 설치하기';if(IS_INAPP)return '브라우저로 열어 설치하기';return '📲 홈 화면에 앱 설치하기';}
 function installBtn(cls){if(isStandalone())return '';return '<button type="button" class="'+cls+'" data-install>'+installLabel()+'</button>';}
@@ -754,6 +761,8 @@ function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast(
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
 applySet();render();if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
 if(GN){S.gift=GN;save();showLetter(GN);}else showLetter();
+try{if(IS_KAKAO&&!sessionStorage.getItem('tam.kx')){sessionStorage.setItem('tam.kx','1');setTimeout(function(){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href.split('#')[0]);},400);}
+ else if(IS_IOS&&!IS_KAKAO&&!IS_INAPP&&!isStandalone()&&!S.iosGuide){S.iosGuide=1;save();setTimeout(showGuide,1800);}}catch(x){}
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
 </script>
