@@ -272,6 +272,17 @@ details.cell-d[open] .chev{transform:rotate(90deg)}
 .hlitem .hen{display:block;margin-top:6px;font-family:'Literata',Georgia,serif;font-weight:380;font-size:15px;line-height:1.65;color:var(--ink2)}
 .ent.miss,.en.miss{font-style:italic;color:var(--mute)}
 .chap h2.en-t{font-family:'Literata',Georgia,serif;font-weight:400}
+.inst{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px auto 0;border:0;background:none;color:#6E5E72;font-size:13.5px;font-weight:600;min-height:40px;text-decoration:underline;text-underline-offset:3px}
+.guide{position:fixed;inset:0;z-index:80;background:rgba(14,20,36,.45);display:flex;align-items:flex-end;justify-content:center}
+.guide-in{position:relative;width:100%;max-width:520px;background:linear-gradient(180deg,#FFF8F1,#FBEFE6);border-radius:26px 26px 0 0;padding:24px 22px calc(env(safe-area-inset-bottom,0px) + 96px);color:#2A2440;animation:sh .35s cubic-bezier(.2,1,.3,1)}
+.guide-in h2{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:24px}
+.guide-in .lead2{margin:0 0 16px;font-size:14px;color:#6E5E72;line-height:1.6}
+.gstep{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid #EEDFE3;font-size:15.5px}
+.gstep b{flex:0 0 30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#5B4E9E,#C47FA6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.gstep .ico{display:inline-flex;vertical-align:-4px;margin:0 2px}
+.gclose{position:absolute;right:14px;top:12px;border:0;background:none;color:#8A7F96;font-size:15px;min-height:44px;padding:0 8px}
+.garrow{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);display:flex;flex-direction:column;align-items:center;gap:4px;color:#5B4E9E;font-size:12px;font-weight:700;animation:bob2 1.2s ease-in-out infinite}
+@keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .fx{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
 .fx .p{position:absolute;top:-60px;left:0;will-change:transform}
 .cel{position:fixed;inset:0;z-index:51;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(14,20,36,.18)}
@@ -401,7 +412,7 @@ function memo(){
 function letterArt(){return '<svg class="lt-art" viewBox="0 280 1024 700" aria-hidden="true"><defs><radialGradient id="lsun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF8E7"/><stop offset=".45" stop-color="#FFE3AE"/><stop offset="1" stop-color="#FFC98A" stop-opacity="0"/></radialGradient><radialGradient id="lglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE9C2" stop-opacity=".75"/><stop offset=".5" stop-color="#FFC9A0" stop-opacity=".25"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient><clipPath id="labove"><rect x="0" y="0" width="1024" height="640"/></clipPath></defs><g fill="#FFF6E0"><circle cx="236" cy="330" r="5" opacity=".85"/><circle cx="318" cy="300" r="3" opacity=".6"/><circle cx="770" cy="320" r="4" opacity=".75"/><circle cx="168" cy="420" r="3" opacity=".5"/><path d="M742 380c4 26 14 36 40 40-26 4-36 14-40 40-4-26-14-36-40-40 26-4 36-14 40-40z" opacity=".95"/></g><circle cx="512" cy="640" r="300" fill="url(#lglow)"/><g clip-path="url(#labove)"><circle cx="512" cy="640" r="168" fill="url(#lsun)"/><circle cx="512" cy="640" r="128" fill="#FFF4DD"/></g><path d="M150 640H262M762 640H874" stroke="#FFF6E6" stroke-width="6" stroke-linecap="round" opacity=".9"/><g transform="translate(0 30)"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44c56-40 140-54 224-44v150c-84-10-168 4-224 44z" fill="#FFFFFF" fill-opacity=".16"/><g fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M512 760c-56-40-140-54-224-44v-150c84-10 168 4 224 44"/><path d="M512 760c56-40 140-54 224-44v-150c-84-10-168 4-224 44"/><path d="M512 610v150"/></g></g></svg>';}
 function ctaHtml(){var t=todayIdx(),ref='';
  if(t<0)ref=fmtDate(START,true)+'에 시작합니다';else if(t>=LEN)ref='이번 1년 일정이 끝났습니다';else ref='오늘 · '+refOf(t);
- return '<div class="lt-cta"><button class="lt-btn" type="button" id="ltgo">'+(S.seenLetter?'오늘의 말씀 펼치기':'1년의 여정 시작하기')+'</button><p class="lt-sub">'+esc(ref)+'</p></div>';}
+ return '<div class="lt-cta"><button class="lt-btn" type="button" id="ltgo">'+(S.seenLetter?'오늘의 말씀 펼치기':'1년의 여정 시작하기')+'</button><p class="lt-sub">'+esc(ref)+'</p>'+installBtn('inst')+'</div>';}
 function showLetter(gift){
  var el=document.createElement('div');el.className='lt';el.setAttribute('role','dialog');el.setAttribute('aria-label','태초, 그리고 아멘 — 첫 편지');
  el.innerHTML='<div class="lt-in">'+letterArt()+'<p class="lt-kicker">매년 성경 일독</p><h1 class="lt-title">태초, 그리고 아멘</h1>'+
@@ -421,7 +432,7 @@ function showLetter(gift){
  ctaHtml()+
  '<div class="lt-foot"><p>성경 본문: 성경전서 개역한글판 © 대한성서공회 1961</p><p>© 주니어솔로몬. 주니어솔로몬은 등록상표(상표등록 제40-1582862호)입니다.</p></div></div>';
  document.body.appendChild(el);
- el.querySelector('#ltgo').onclick=function(){S.seenLetter=1;save();el.remove();window.scrollTo(0,0);};
+ bindInstall(el);el.querySelector('#ltgo').onclick=function(){S.seenLetter=1;save();el.remove();window.scrollTo(0,0);};
 }
 function janStart(){return START.getMonth()===0&&START.getDate()===1;}
 function eraIdx(i){return janStart()?Math.min(11,cycMonth(i)):Math.min(11,Math.floor(i*12/LEN));}
@@ -510,7 +521,7 @@ function vSet(){
   '<button class="cell" type="button" id="ltshow"><b>첫 편지 다시 보기</b>'+chev+'</button>'+
   '<label class="cell"><div><b>녹음 모드</b><span class="d">장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있어요</span></div><input type="checkbox" class="sw" id="recsw"'+(S.rec?' checked':'')+' aria-label="녹음 모드"></label></div></section>';
  h+='<section class="grp"><h2>도움말</h2><div class="cells">'+
-  '<details class="cell-d"><summary class="cell"><b>홈 화면에 앱 추가하기</b>'+chev+'</summary><div class="dbody">아이폰: 사파리 아래 공유 버튼 → 홈 화면에 추가<br>안드로이드: 크롬 메뉴(⋮) → 홈 화면에 추가</div></details>'+
+  (isStandalone()?'<div class="cell"><b>홈 화면 앱</b><span class="d" style="margin:0">설치되어 있어요 ✓</span></div>':'<button class="cell" type="button" data-install><div><b>'+installLabel()+'</b><span class="d">아이콘을 눌러 앱처럼 바로 열 수 있어요</span></div>'+chev+'</button>')+
   '<details class="cell-d"><summary class="cell"><b>읽기 계획</b>'+chev+'</summary><div class="dbody">월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편<br><br>구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>세 개의 원어</b>'+chev+'</summary><div class="dbody"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>내 기록은 어디에 저장되나요</b>'+chev+'</summary><div class="dbody">진도·질문·밑줄·녹음은 이 휴대폰의 브라우저에만 저장됩니다. 휴대폰을 바꾸거나 방문 기록을 지우면 사라지니, 밑줄과 질문은 각 탭의 ‘전체 복사하기’로 옮겨 두세요.</div></details></div></section>';
@@ -543,6 +554,7 @@ function bind(){
  var si=document.getElementById('since');if(si)si.onchange=function(){if(si.value){S.since=si.value;save();toast('처음 시작한 날: '+fmtDate(parse(si.value),true));}};
  if(e=document.getElementById('sdjan'))e.onclick=function(){var t=today0();setStart(ymd(new Date(t.getMonth()>=9?t.getFullYear()+1:t.getFullYear(),0,1)));};
  if(e=document.getElementById('sdtoday'))e.onclick=function(){setStart(ymd(today0()));};
+ bindInstall();
  if(e=document.getElementById('giftopen'))e.onclick=function(){showGift();};
  if(e=document.getElementById('ltshow'))e.onclick=function(){showLetter();};
  var ao=document.getElementById('alon');if(ao)ao.onchange=function(){S.alarm=S.alarm||{time:'21:00'};S.alarm.on=ao.checked;save();toast(ao.checked?'알람을 켰어요 · '+S.alarm.time:'알람을 껐어요');};
@@ -713,6 +725,31 @@ function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new
  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//taechoamen//KR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:tam-alarm-'+Date.now()+'@taechoamen.com','DTSTAMP:'+f(n),'DTSTART:'+f(st),'DURATION:PT10M','RRULE:FREQ=DAILY','SUMMARY:영혼의 알람시계 · 오늘의 말씀','DESCRIPTION:태초\\, 그리고 아멘 — 오늘 읽을 곳을 펼쳐 보세요. '+u,'URL:'+u,'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:오늘의 말씀을 펼칠 시간이에요','TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
  var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),url=URL.createObjectURL(blob),l=document.createElement('a');l.href=url;l.download='taechoamen-alarm.ics';document.body.appendChild(l);l.click();l.remove();setTimeout(function(){URL.revokeObjectURL(url);},8000);
  toast('캘린더 창이 열리면 「추가」를 눌러 주세요');}
+var DEFERRED=null,UA=navigator.userAgent||'';
+var IS_IOS=/iphone|ipad|ipod/i.test(UA)||(/Macintosh/.test(UA)&&'ontouchend' in document),IS_AND=/android/i.test(UA),IS_KAKAO=/KAKAOTALK/i.test(UA),IS_INAPP=/NAVER|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|BAND\//i.test(UA);
+function isStandalone(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();DEFERRED=e;});
+window.addEventListener('appinstalled',function(){DEFERRED=null;toast('홈 화면에 설치했어요');var b=document.querySelectorAll('[data-install]');b.forEach(function(x){x.remove();});});
+function installLabel(){if(IS_KAKAO)return IS_IOS?'사파리로 열어 설치하기':'브라우저로 열어 설치하기';if(IS_INAPP)return '브라우저로 열어 설치하기';return '📲 홈 화면에 앱 설치하기';}
+function installBtn(cls){if(isStandalone())return '';return '<button type="button" class="'+cls+'" data-install>'+installLabel()+'</button>';}
+function doInstall(){
+ var url=location.href.split('#')[0];
+ if(IS_KAKAO){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(url);return;}
+ if(DEFERRED){DEFERRED.prompt();DEFERRED.userChoice.then(function(r){if(r&&r.outcome==='accepted')toast('설치를 시작했어요');DEFERRED=null;});return;}
+ showGuide();}
+function showGuide(){
+ var share='<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>';
+ var more='<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>';
+ var kebab='<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+ var g=document.createElement('div');g.className='guide';g.setAttribute('role','dialog');g.setAttribute('aria-label','홈 화면에 추가하는 방법');
+ var steps,arrow='';
+ if(IS_INAPP&&!IS_KAKAO){steps='<div class="gstep"><b>1</b><span>오른쪽 위 메뉴에서 <strong>다른 브라우저로 열기</strong>를 누르세요</span></div><div class="gstep"><b>2</b><span>사파리(크롬)에서 다시 이 버튼을 누르면 됩니다</span></div>';}
+ else if(IS_IOS){steps='<div class="gstep"><b>1</b><span>화면 아래 '+more+' 또는 '+share+' 버튼을 누르세요</span></div><div class="gstep"><b>2</b><span><strong>공유</strong>를 누르세요</span></div><div class="gstep"><b>3</b><span>목록을 올려 <strong>홈 화면에 추가</strong>를 누르세요</span></div>';
+  arrow='<div class="garrow" style="right:22px">여기를 누르세요<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg></div>';}
+ else{steps='<div class="gstep"><b>1</b><span>오른쪽 위 '+kebab+' 메뉴를 누르세요</span></div><div class="gstep"><b>2</b><span><strong>홈 화면에 추가</strong> 또는 <strong>앱 설치</strong>를 누르세요</span></div>';}
+ g.innerHTML='<div class="guide-in"><button class="gclose" type="button">닫기</button><h2>홈 화면에 추가하기</h2><p class="lead2">한 번만 추가해 두면, 아이콘을 눌러 앱처럼 바로 열 수 있어요.</p>'+steps+arrow+'</div>';
+ document.body.appendChild(g);g.querySelector('.gclose').onclick=function(){g.remove();};g.onclick=function(e){if(e.target===g)g.remove();};}
+function bindInstall(root){(root||document).querySelectorAll('[data-install]').forEach(function(b){b.onclick=doInstall;});}
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
 applySet();render();if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
