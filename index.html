@@ -524,7 +524,7 @@ function vSet(){
   '<button class="cell" type="button" id="ltshow"><b>첫 편지 다시 보기</b>'+chev+'</button>'+
   '<label class="cell"><div><b>녹음 모드</b><span class="d">장마다 내 목소리로 녹음해 목소리 선물로 보낼 수 있어요</span></div><input type="checkbox" class="sw" id="recsw"'+(S.rec?' checked':'')+' aria-label="녹음 모드"></label></div></section>';
  h+='<section class="grp"><h2>도움말</h2><div class="cells">'+
-  (isStandalone()?'<div class="cell"><b>홈 화면 앱</b><span class="d" style="margin:0">설치되어 있어요 ✓</span></div>':'<button class="cell" type="button" data-install><div><b>'+installLabel()+'</b><span class="d">아이콘을 눌러 앱처럼 바로 열 수 있어요</span></div>'+chev+'</button>')+
+  (isInstalled()?'<div class="cell"><b>홈 화면 앱</b><span class="d" style="margin:0">설치되어 있어요 ✓</span></div>':'<button class="cell" type="button" data-install><div><b>'+installLabel()+'</b><span class="d">아이콘을 눌러 앱처럼 바로 열 수 있어요</span></div>'+chev+'</button>')+
   '<details class="cell-d"><summary class="cell"><b>읽기 계획</b>'+chev+'</summary><div class="dbody">월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편<br><br>구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>세 개의 원어</b>'+chev+'</summary><div class="dbody"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>내 기록은 어디에 저장되나요</b>'+chev+'</summary><div class="dbody">진도·질문·밑줄·녹음은 이 휴대폰의 브라우저에만 저장됩니다. 휴대폰을 바꾸거나 방문 기록을 지우면 사라지니, 밑줄과 질문은 각 탭의 ‘전체 복사하기’로 옮겨 두세요.</div></details></div></section>';
@@ -731,14 +731,18 @@ function addCal(){var tm=(S.alarm&&S.alarm.time)||'21:00',hm=tm.split(':'),n=new
 var DEFERRED=null,UA=navigator.userAgent||'';
 var IS_IOS=/iphone|ipad|ipod/i.test(UA)||(/Macintosh/.test(UA)&&'ontouchend' in document),IS_AND=/android/i.test(UA),IS_KAKAO=/KAKAOTALK/i.test(UA),IS_INAPP=/NAVER|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|BAND\//i.test(UA);
 function isStandalone(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;}
-window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();DEFERRED=e;var last=+(S.instAsk||0);if(!isStandalone()&&Date.now()-last>7*864e5)setTimeout(showInstallAsk,1200);});
+function isInstalled(){return isStandalone()||!!S.installed;}
+function markInstalled(){if(!S.installed){S.installed=1;save();}document.querySelectorAll('[data-install]').forEach(function(x){x.remove();});}
+if(isStandalone())setTimeout(markInstalled,0);
+try{if(navigator.getInstalledRelatedApps)navigator.getInstalledRelatedApps().then(function(a){if(a&&a.length)markInstalled();}).catch(function(){});}catch(x){}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();DEFERRED=e;var last=+(S.instAsk||0);if(!isInstalled()&&Date.now()-last>7*864e5)setTimeout(showInstallAsk,1200);});
 function showInstallAsk(){if(!DEFERRED||document.querySelector('.guide'))return;S.instAsk=Date.now();save();
  var g=document.createElement('div');g.className='guide';g.setAttribute('role','dialog');g.setAttribute('aria-label','홈 화면에 설치');
- g.innerHTML='<div class="guide-in" style="padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px)"><h2>홈 화면에 설치할까요?</h2><p class="lead2">아이콘 하나로 매일 바로 열 수 있어요.<br>‘설치하기’를 누르고, 뜨는 창에서 한 번 더 ‘설치’를 누르면 끝입니다.</p><div class="gbtns"><button class="p" type="button">설치하기</button><button class="s" type="button">나중에</button></div></div>';
- document.body.appendChild(g);g.querySelector('.p').onclick=function(){g.remove();doInstall();};g.querySelector('.s').onclick=function(){g.remove();};g.onclick=function(e){if(e.target===g)g.remove();};}
-window.addEventListener('appinstalled',function(){DEFERRED=null;toast('홈 화면에 설치했어요');var b=document.querySelectorAll('[data-install]');b.forEach(function(x){x.remove();});});
+ g.innerHTML='<div class="guide-in" style="padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px)"><h2>홈 화면에 설치할까요?</h2><p class="lead2">아이콘 하나로 매일 바로 열 수 있어요.<br>‘설치하기’를 누르고, 뜨는 창에서 한 번 더 ‘설치’를 누르면 끝입니다.</p><div class="gbtns"><button class="p" type="button">설치하기</button><button class="s" type="button">나중에</button><button class="s gdone2" type="button">이미 설치했어요</button></div></div>';
+ document.body.appendChild(g);g.querySelector('.p').onclick=function(){g.remove();doInstall();};g.querySelector('.s').onclick=function(){g.remove();};g.querySelector('.gdone2').onclick=function(){g.remove();markInstalled();};g.onclick=function(e){if(e.target===g)g.remove();};}
+window.addEventListener('appinstalled',function(){DEFERRED=null;toast('홈 화면에 설치했어요');markInstalled();});
 function installLabel(){if(IS_KAKAO)return IS_IOS?'사파리로 열어 설치하기':'브라우저로 열어 설치하기';if(IS_INAPP)return '브라우저로 열어 설치하기';return '📲 홈 화면에 앱 설치하기';}
-function installBtn(cls){if(isStandalone())return '';return '<button type="button" class="'+cls+'" data-install>'+installLabel()+'</button>';}
+function installBtn(cls){if(isInstalled())return '';return '<button type="button" class="'+cls+'" data-install>'+installLabel()+'</button>';}
 function doInstall(){
  var url=location.href.split('#')[0];
  if(IS_KAKAO){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(url);return;}
@@ -754,15 +758,15 @@ function showGuide(){
  else if(IS_IOS){steps='<div class="gstep"><b>1</b><span>화면 아래 '+more+' 또는 '+share+' 버튼을 누르세요</span></div><div class="gstep"><b>2</b><span><strong>공유</strong>를 누르세요</span></div><div class="gstep"><b>3</b><span>목록을 올려 <strong>홈 화면에 추가</strong>를 누르세요</span></div>';
   arrow='<div class="garrow" style="right:22px">여기를 누르세요<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg></div>';}
  else{steps='<div class="gstep"><b>1</b><span>오른쪽 위 '+kebab+' 메뉴를 누르세요</span></div><div class="gstep"><b>2</b><span><strong>홈 화면에 추가</strong> 또는 <strong>앱 설치</strong>를 누르세요</span></div>';}
- g.innerHTML='<div class="guide-in"><button class="gclose" type="button">닫기</button><h2>홈 화면에 추가하기</h2><p class="lead2">한 번만 추가해 두면, 아이콘을 눌러 앱처럼 바로 열 수 있어요.</p>'+steps+arrow+'</div>';
- document.body.appendChild(g);g.querySelector('.gclose').onclick=function(){g.remove();};g.onclick=function(e){if(e.target===g)g.remove();};}
+ g.innerHTML='<div class="guide-in"><button class="gclose" type="button">닫기</button><h2>홈 화면에 추가하기</h2><p class="lead2">한 번만 추가해 두면, 아이콘을 눌러 앱처럼 바로 열 수 있어요.</p>'+steps+'<button type="button" class="gdone" style="display:block;margin:14px auto 0;border:0;background:none;color:#8A7F96;font-size:14px;min-height:44px;text-decoration:underline;text-underline-offset:3px">이미 설치했어요</button>'+arrow+'</div>';
+ document.body.appendChild(g);g.querySelector('.gclose').onclick=function(){g.remove();};g.querySelector('.gdone').onclick=function(){g.remove();markInstalled();toast('설치 버튼을 숨겼어요');};g.onclick=function(e){if(e.target===g)g.remove();};}
 function bindInstall(root){(root||document).querySelectorAll('[data-install]').forEach(function(b){b.onclick=doInstall;});}
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
 applySet();render();if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
 if(GN){S.gift=GN;save();showLetter(GN);}else showLetter();
 try{if(IS_KAKAO&&!sessionStorage.getItem('tam.kx')){sessionStorage.setItem('tam.kx','1');setTimeout(function(){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href.split('#')[0]);},400);}
- else if(IS_IOS&&!IS_KAKAO&&!IS_INAPP&&!isStandalone()&&!S.iosGuide){S.iosGuide=1;save();setTimeout(showGuide,1800);}}catch(x){}
+ else if(IS_IOS&&!IS_KAKAO&&!IS_INAPP&&!isInstalled()&&!S.iosGuide){S.iosGuide=1;save();setTimeout(showGuide,1800);}}catch(x){}
 if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude\.ai$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){});}catch(e){}}
 })();
 </script>
