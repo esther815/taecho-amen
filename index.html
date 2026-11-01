@@ -18,6 +18,8 @@
 <meta property="og:url" content="https://taechoamen.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
+<script data-goatcounter="https://taechoamen.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -527,6 +529,7 @@ function vSet(){
   (isInstalled()?'<div class="cell"><b>홈 화면 앱</b><span class="d" style="margin:0">설치되어 있어요 ✓</span></div>':'<button class="cell" type="button" data-install><div><b>'+installLabel()+'</b><span class="d">아이콘을 눌러 앱처럼 바로 열 수 있어요</span></div>'+chev+'</button>')+
   '<details class="cell-d"><summary class="cell"><b>읽기 계획</b>'+chev+'</summary><div class="dbody">월~금: 구약 2~3장 + 신약 1장<br>토: 구약 2~3장<br>주일: 시편 3편<br><br>구약(시편 제외)은 사건이 일어난 순서대로 읽습니다. 1년이면 66권 1,189장을 모두 읽고, 연말에 남는 날은 보충일이 됩니다. 선지서 배치는 통상적 연대 추정을 따랐습니다.</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>세 개의 원어</b>'+chev+'</summary><div class="dbody"><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span> 베레쉬트, ‘태초에’ — 창세기 1:1<br><span class="he" style="font-family:\'Noto Serif KR\',serif;font-style:italic" lang="grc">ἀμήν</span> 아멘 — 요한계시록 22:21<br><span class="he" style="font-family:\'Noto Serif\',serif;font-style:italic" lang="grc">οὐκ ἐγκακοῦμεν</span> 우리가 낙심하지 아니하노니 — 고린도후서 4:16</div></details>'+
+  '<details class="cell-d"><summary class="cell"><b>익명 통계</b>'+chev+'</summary><div class="dbody">앱을 연 휴대폰 수, 다 읽은 횟수처럼 이름 없는 숫자만 셉니다. 이름·연락처·읽은 본문·밑줄·질문·녹음은 수집하지 않으며, 쿠키를 쓰지 않습니다. (GoatCounter)</div></details>'+
   '<details class="cell-d"><summary class="cell"><b>내 기록은 어디에 저장되나요</b>'+chev+'</summary><div class="dbody">진도·질문·밑줄·녹음은 이 휴대폰의 브라우저에만 저장됩니다. 휴대폰을 바꾸거나 방문 기록을 지우면 사라지니, 밑줄과 질문은 각 탭의 ‘전체 복사하기’로 옮겨 두세요.</div></details></div></section>';
  h+='<section class="grp"><div class="cells"><button class="cell danger" type="button" id="rs"><div><b>이번 1년 진도 초기화</b><span class="d">읽음 표시만 지웁니다. 질문과 밑줄은 남아요</span></div></button></div></section>';
  return h+legal();}
@@ -545,7 +548,7 @@ function bind(){
  if(e=document.getElementById('newcyc'))e.onclick=function(){setStart(nextStart());tab='today';render();};
  document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(+b.dataset.go)}});
  var qa=document.getElementById('q');if(qa){var tm,qi=cur;qa.oninput=function(){var val=qa.value;clearTimeout(tm);tm=setTimeout(function(){var k=ymd(dateOf(qi));if(val.trim())S.notes[k]={t:val,r:refOf(qi)};else delete S.notes[k];save();var sv=document.getElementById('sv');if(sv)sv.textContent='저장됨';},400);};}
- if(e=document.getElementById('dn'))e.onclick=function(){var d=DONE();if(d[cur])delete d[cur];else{d[cur]=ymd(today0());var first=!S.since;if(first)S.since=ymd(today0());var n=prog(),fin=false;
+ if(e=document.getElementById('dn'))e.onclick=function(){var d=DONE();if(d[cur])delete d[cur];else{d[cur]=ymd(today0());gc('done','오늘 다 읽은 사람');var first=!S.since;if(first)S.since=ymd(today0());var n=prog(),fin=false;
   if(n>=READ_DAYS){S.fin=S.fin||[];var c=S.cyc[S.start];if(!c.fin){c.fin=ymd(today0());S.fin.push(c.fin);fin=true;}}
   save();render();celebrate(cur,{first:first,n:n,fin:fin,late:isLate(cur)});return;}save();render();};
  document.querySelectorAll('.v[data-k]').forEach(function(p){p.onclick=function(){var k=p.dataset.k;if(S.hl[k]){delete S.hl[k];p.classList.remove('hl');toast('밑줄을 지웠습니다');}else{S.hl[k]={t:Date.now(),e:+p.dataset.e};p.classList.add('hl');toast('밑줄 · '+hlRef(k,+p.dataset.e));}save();};});
@@ -715,7 +718,7 @@ function showGift(preVoice){
  function url(){var p=new URLSearchParams();var t=$('gt').value.trim(),f=$('gf').value.trim(),m=$('gm').value.trim();if(t)p.set('t',t);if(f)p.set('f',f);if(m&&m!==dm)p.set('m',m);if($('gv').value)p.set('v','1');S.lastTo=t;S.myName=f;S.lastMsg=m;save();return giftBase()+(p.toString()?'?'+p.toString():'');}
  function text(){var t=$('gt').value.trim(),f=$('gf').value.trim();return (t?t+'님께 ':'')+'선물이 도착했어요 🎁\n1년 동안 함께 읽을 성경입니다.'+(f?'\n— '+f+' 드림':'')+'\n\n선물함 열기';}
  $('gx').onclick=function(){sh.remove();};sh.onclick=function(e){if(e.target===sh)sh.remove();};
- $('gs').onclick=function(){var u=url(),tx=text();if($('gv').value)$('gvs').style.display='flex';
+ $('gs').onclick=function(){var u=url(),tx=text();gc('gift-sent','선물 보낸 수');if($('gv').value)$('gvs').style.display='flex';
   if(navigator.share)navigator.share({title:'태초, 그리고 아멘 — 선물이 도착했어요',text:tx,url:u}).catch(function(){});else copy(tx+'\n'+u);};
  $('gvs').onclick=function(){shareVoice($('gv').value);};
  $('gc').onclick=function(){copy(text()+'\n'+url());if($('gv').value)$('gvs').style.display='flex';};
@@ -740,7 +743,7 @@ function showInstallAsk(){if(!DEFERRED||document.querySelector('.guide'))return;
  var g=document.createElement('div');g.className='guide';g.setAttribute('role','dialog');g.setAttribute('aria-label','홈 화면에 설치');
  g.innerHTML='<div class="guide-in" style="padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px)"><h2>홈 화면에 설치할까요?</h2><p class="lead2">아이콘 하나로 매일 바로 열 수 있어요.<br>‘설치하기’를 누르고, 뜨는 창에서 한 번 더 ‘설치’를 누르면 끝입니다.</p><div class="gbtns"><button class="p" type="button">설치하기</button><button class="s" type="button">나중에</button><button class="s gdone2" type="button">이미 설치했어요</button></div></div>';
  document.body.appendChild(g);g.querySelector('.p').onclick=function(){g.remove();doInstall();};g.querySelector('.s').onclick=function(){g.remove();};g.querySelector('.gdone2').onclick=function(){g.remove();markInstalled();};g.onclick=function(e){if(e.target===g)g.remove();};}
-window.addEventListener('appinstalled',function(){DEFERRED=null;toast('홈 화면에 설치했어요');markInstalled();});
+window.addEventListener('appinstalled',function(){DEFERRED=null;gc('installed','홈 화면 설치');S.gcInst=1;toast('홈 화면에 설치했어요');markInstalled();});
 function installLabel(){if(IS_KAKAO)return IS_IOS?'사파리로 열어 설치하기':'브라우저로 열어 설치하기';if(IS_INAPP)return '브라우저로 열어 설치하기';return '📲 홈 화면에 앱 설치하기';}
 function installBtn(cls){if(isInstalled())return '';return '<button type="button" class="'+cls+'" data-install>'+installLabel()+'</button>';}
 function doInstall(){
@@ -761,9 +764,14 @@ function showGuide(){
  g.innerHTML='<div class="guide-in"><button class="gclose" type="button">닫기</button><h2>홈 화면에 추가하기</h2><p class="lead2">한 번만 추가해 두면, 아이콘을 눌러 앱처럼 바로 열 수 있어요.</p>'+steps+'<button type="button" class="gdone" style="display:block;margin:14px auto 0;border:0;background:none;color:#8A7F96;font-size:14px;min-height:44px;text-decoration:underline;text-underline-offset:3px">이미 설치했어요</button>'+arrow+'</div>';
  document.body.appendChild(g);g.querySelector('.gclose').onclick=function(){g.remove();};g.querySelector('.gdone').onclick=function(){g.remove();markInstalled();toast('설치 버튼을 숨겼어요');};g.onclick=function(e){if(e.target===g)g.remove();};}
 function bindInstall(root){(root||document).querySelectorAll('[data-install]').forEach(function(b){b.onclick=doInstall;});}
+function gc(path,title){var n=0;(function f(){if(window.goatcounter&&window.goatcounter.count){try{window.goatcounter.count({path:path,title:title||path,event:true});}catch(e){}}else if(n++<15)setTimeout(f,1000);})();}
+function gcStart(){var t=ymd(today0());
+ if(!S.gcFirst){S.gcFirst=t;save();gc('first-open','처음 시작한 사람');}
+ if(S.gcDay!==t){S.gcDay=t;save();gc('open-today','오늘 연 사람');}
+ if(isStandalone()&&!S.gcInst){S.gcInst=1;save();gc('installed','홈 화면 설치');}}
 function copy(txt){try{navigator.clipboard.writeText(txt).then(function(){toast('복사했습니다')},function(){toast('복사하지 못했습니다')});}catch(x){toast('복사하지 못했습니다')}}
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();window.scrollTo(0,0);}});
-applySet();render();if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
+applySet();render();try{gcStart();}catch(x){}if(S.lang!=='ko')loadEN(function(){render();});var GN=null;try{GN=JSON.parse(localStorage.getItem('tam.giftNew')||'null');localStorage.removeItem('tam.giftNew');}catch(e){}
 if(GN){S.gift=GN;save();showLetter(GN);}else showLetter();
 try{if(IS_KAKAO&&!sessionStorage.getItem('tam.kx')){sessionStorage.setItem('tam.kx','1');setTimeout(function(){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href.split('#')[0]);},400);}
  else if(IS_IOS&&!IS_KAKAO&&!IS_INAPP&&!isInstalled()&&!S.iosGuide){S.iosGuide=1;save();setTimeout(showGuide,1800);}}catch(x){}

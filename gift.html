@@ -15,6 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#232A63">
 <link rel="icon" href="icon-192.png">
+<script data-goatcounter="https://taechoamen.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{--serif:'Noto Serif KR',serif;--sans:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;box-sizing:border-box}
@@ -113,12 +115,13 @@ function burst(){var cols=['#FFE7A3','#F28AA0','#C7B8F5','#FFFFFF','#F3D27A','#E
   e.style.left=(Math.random()*W)+'px';document.body.appendChild(e);
   var dx=(Math.random()-.5)*140,rot=(Math.random()-.5)*480;
   e.animate([{transform:'translate(0,0) rotate(0)'},{transform:'translate('+dx+'px,'+(H*.5)+'px) rotate('+rot/2+'deg)',offset:.5},{transform:'translate('+(-dx*.5)+'px,'+(H+80)+'px) rotate('+rot+'deg)'}],{duration:2600+Math.random()*2200,delay:Math.random()*900,easing:'cubic-bezier(.3,.1,.6,1)',fill:'both'}).onfinish=function(){this.effect.target.remove();};}}
-function open(){if(opened)return;opened=true;try{if(navigator.vibrate)navigator.vibrate([20,40,30]);}catch(e){}
+function gcE(p,t){var n=0;(function f(){if(window.goatcounter&&window.goatcounter.count){try{window.goatcounter.count({path:p,title:t,event:true});}catch(e){}}else if(n++<15)setTimeout(f,1000);})();}
+function open(){if(opened)return;opened=true;gcE('gift-opened','선물함 연 수');try{if(navigator.vibrate)navigator.vibrate([20,40,30]);}catch(e){}
  var lid=$('lid');lid.animate([{transform:'translate(0,0) rotate(0)'},{transform:'translate(-40px,-210px) rotate(-28deg)',opacity:0}],{duration:900,easing:'cubic-bezier(.3,.7,.3,1)',fill:'forwards'});
  w.classList.add('open');burst();setTimeout(function(){$('st').style.height='250px';},700);}
 $('op').onclick=open;$('st').onclick=open;
 setInterval(function(){if(!opened){w.classList.add('wiggle');setTimeout(function(){w.classList.remove('wiggle');},650);}},3600);
-$('go').onclick=function(){try{localStorage.setItem('tam.giftNew',JSON.stringify({to:to,from:fr,msg:$('msg').textContent,voice:v,at:Date.now()}));}catch(e){}location.href='./';};
+$('go').onclick=function(){gcE('gift-accepted','선물 받고 시작한 수');try{localStorage.setItem('tam.giftNew',JSON.stringify({to:to,from:fr,msg:$('msg').textContent,voice:v,at:Date.now()}));}catch(e){}location.href='./';};
 })();
 </script>
 </body>
